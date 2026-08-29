@@ -1,0 +1,445 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize Icons (guard de carga segura)
+    const refreshIcons = () => { if (window.lucide) lucide.createIcons(); };
+    refreshIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 2. Navbar & Mobile Menu
+    const navbar = document.getElementById('navbar');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuBtn = document.getElementById('menu-btn');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            navbar.classList.add('nav-scrolled');
+        } else {
+            navbar.classList.remove('nav-scrolled');
+        }
+    });
+
+    let isMenuOpen = false;
+    const setMenuIcon = (name) => {
+        menuBtn.innerHTML = `<i data-lucide="${name}" class="w-6 h-6"></i>`;
+        refreshIcons();
+    };
+    menuBtn.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        menuBtn.setAttribute('aria-expanded', isMenuOpen);
+        if (isMenuOpen) {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.remove('opacity-0', '-translate-y-4');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
+            setMenuIcon('x');
+        } else {
+            closeMenu();
+        }
+    });
+
+    function closeMenu() {
+        isMenuOpen = false;
+        menuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+        mobileMenu.classList.add('opacity-0', '-translate-y-4');
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+        }, 200);
+        setMenuIcon('menu');
+    }
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // 3. Smooth Scroll (Fallback/Enhancement)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                const offsetTop = target.getBoundingClientRect().top + window.scrollY - 104;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // 4. Reveal Animations (Intersection Observer)
+    if (!prefersReducedMotion) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // 5. Parallax Hero
+    const heroContent = document.getElementById('hero-content');
+    if (!prefersReducedMotion && heroContent) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY < window.innerHeight) {
+                heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+                heroContent.style.opacity = 1 - (scrollY / window.innerHeight) * 1.5;
+            }
+        });
+    }
+
+    // 6. Estimator Logic
+    const palletsInput = document.getElementById('pallets');
+    const monthsInput = document.getElementById('months');
+    const palletsVal = document.getElementById('pallets-val');
+    const monthsVal = document.getElementById('months-val');
+    const totalCost = document.getElementById('total-cost');
+    const palletStack = document.getElementById('pallet-stack');
+    const palletOverflow = document.getElementById('pallet-overflow');
+    const unitMonthsBtn = document.getElementById('unit-months');
+    const unitDaysBtn = document.getElementById('unit-days');
+    const durationNote = document.getElementById('duration-note');
+    const rate = 15;
+    let durationUnit = 'months';
+    let estService = 'storage';
+    let estTurnaround = 'same_day';
+    const blockPallets = document.getElementById('block-pallets');
+    const blockDuration = document.getElementById('block-duration');
+    const blockTurnaround = document.getElementById('block-turnaround');
+    const estSameBtn = document.getElementById('est-same');
+    const estNextBtn = document.getElementById('est-next');
+
+    function setEstService(s) {
+        estService = s;
+        document.querySelectorAll('#service-picker .est-svc').forEach(b => {
+            const active = b.dataset.service === s;
+            b.className = 'est-svc px-2 py-2 text-xs font-bold rounded-md ' + (active ? 'bg-accent text-white' : 'bg-slate-700 text-slate-300');
+            b.setAttribute('aria-pressed', String(active));
+        });
+        if (blockPallets) blockPallets.classList.toggle('hidden', s === 'crossdock');
+        if (blockDuration) blockDuration.classList.toggle('hidden', s !== 'storage');
+        if (blockTurnaround) blockTurnaround.classList.toggle('hidden', s !== 'transload');
+        updateEstimator();
+    }
+
+    function setEstTurnaround(t) {
+        estTurnaround = t;
+        const same = t === 'same_day';
+        if (estSameBtn) {
+            estSameBtn.className = 'px-3 py-1.5 text-xs font-bold ' + (same ? 'bg-accent text-white' : 'bg-slate-700 text-slate-300');
+            estSameBtn.setAttribute('aria-pressed', String(same));
+        }
+        if (estNextBtn) {
+            estNextBtn.className = 'px-3 py-1.5 text-xs font-bold ' + (same ? 'bg-slate-700 text-slate-300' : 'bg-accent text-white');
+            estNextBtn.setAttribute('aria-pressed', String(!same));
+        }
+        updateEstimator();
+    }
+
+    function setDurationUnit(u) {
+        durationUnit = u;
+        const isMonths = u === 'months';
+        monthsInput.max = isMonths ? 12 : 45;
+        monthsInput.value = isMonths ? 1 : 10;
+        monthsVal.textContent = monthsInput.value;
+        unitMonthsBtn.className = 'px-2 py-1 text-xs font-bold ' + (isMonths ? 'bg-accent text-white' : 'bg-slate-700 text-slate-300');
+        unitDaysBtn.className = 'px-2 py-1 text-xs font-bold ' + (isMonths ? 'bg-slate-700 text-slate-300' : 'bg-accent text-white');
+        unitMonthsBtn.setAttribute('aria-pressed', String(isMonths));
+        unitDaysBtn.setAttribute('aria-pressed', String(!isMonths));
+        if (durationNote) durationNote.classList.toggle('hidden', isMonths);
+        const estMonthly = document.getElementById('estimate-monthly');
+        const estDaily = document.getElementById('estimate-daily');
+        if (estMonthly) estMonthly.classList.toggle('hidden', !isMonths);
+        if (estDaily) estDaily.classList.toggle('hidden', isMonths);
+        updateEstimator();
+    }
+
+    function animateValue(obj, start, end, duration) {
+        if (prefersReducedMotion) {
+            obj.innerHTML = end.toLocaleString('en-US', { minimumFractionDigits: 2 });
+            return;
+        }
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const easeProgress = progress * (2 - progress);
+            const current = start + easeProgress * (end - start);
+            obj.innerHTML = current.toLocaleString('en-US', { minimumFractionDigits: 2 });
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    function updateEstimator() {
+        if (!palletsInput || !monthsInput) return;
+
+        const pallets = parseInt(palletsInput.value);
+        palletsVal.textContent = pallets;
+        monthsVal.textContent = monthsInput.value;
+
+        let total = null;
+        let dailyCta = false;
+        if (estService === 'storage') {
+            if (durationUnit === 'months') {
+                total = pallets * parseInt(monthsInput.value) * rate;
+            } else {
+                dailyCta = true;
+            }
+        } else if (estService === 'pickpack') {
+            total = pallets * 10;
+        } else if (estService === 'transload') {
+            total = pallets * (estTurnaround === 'same_day' ? 9 : 10.5);
+        } else if (estService === 'crossdock') {
+            total = 250;
+        }
+
+        const estMonthly = document.getElementById('estimate-monthly');
+        const estDaily = document.getElementById('estimate-daily');
+        if (estMonthly) estMonthly.classList.toggle('hidden', dailyCta);
+        if (estDaily) estDaily.classList.toggle('hidden', !dailyCta);
+
+        if (total !== null) {
+            const currentTotal = parseFloat(totalCost.textContent.replace(/,/g, '')) || 0;
+            animateValue(totalCost, currentTotal, total, 400);
+        }
+
+        if (!prefersReducedMotion) {
+            const displayCount = Math.min(pallets, 100);
+            palletStack.innerHTML = '';
+            for (let i = 0; i < displayCount; i++) {
+                const div = document.createElement('div');
+                div.className = 'iso-pallet reveal reveal-active';
+                
+                // 5x5 Grid = 25 pallets per layer
+                const layerSize = 25;
+                const layer = Math.floor(i / layerSize);
+                const posInLayer = i % layerSize;
+                const r = Math.floor(posInLayer / 5) + 1; // Row 1-5
+                const c = (posInLayer % 5) + 1; // Col 1-5
+                
+                div.style.gridColumn = c;
+                div.style.gridRow = r;
+                // Offset each layer vertically (Z-axis in 3D grid). 14px accounts for pallet height.
+                div.style.transform = `translateZ(${layer * 14}px)`;
+                div.style.animationDelay = `${i * 0.01}s`;
+                
+                palletStack.appendChild(div);
+            }
+            
+            if (pallets > 100) {
+                palletOverflow.textContent = `+ ${pallets - 100} more`;
+                palletOverflow.classList.remove('hidden');
+            } else {
+                palletOverflow.classList.add('hidden');
+            }
+        }
+    }
+
+    if (palletsInput && monthsInput) {
+        palletsInput.addEventListener('input', updateEstimator);
+        monthsInput.addEventListener('input', updateEstimator);
+        if (unitMonthsBtn) unitMonthsBtn.addEventListener('click', () => setDurationUnit('months'));
+        if (unitDaysBtn) unitDaysBtn.addEventListener('click', () => setDurationUnit('days'));
+        document.querySelectorAll('#service-picker .est-svc').forEach(b => {
+            b.addEventListener('click', () => setEstService(b.dataset.service));
+        });
+        if (estSameBtn) estSameBtn.addEventListener('click', () => setEstTurnaround('same_day'));
+        if (estNextBtn) estNextBtn.addEventListener('click', () => setEstTurnaround('next_day'));
+        updateEstimator();
+    }
+
+    // 7. Floating Contact
+    const floatingContact = document.getElementById('floating-contact');
+    if (floatingContact) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                floatingContact.classList.remove('translate-y-24', 'opacity-0');
+            } else {
+                floatingContact.classList.add('translate-y-24', 'opacity-0');
+            }
+        });
+    }
+
+    // 8. Dock Door Wipe Transition
+    const facilitySection = document.getElementById('facility');
+    const dockDoor = document.getElementById('dock-door');
+    
+    if (facilitySection && dockDoor && !prefersReducedMotion) {
+        const doorObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Open door when section is 30% visible
+                if (entry.isIntersecting) {
+                    dockDoor.classList.add('is-open');
+                } else if (entry.boundingClientRect.top > 0) {
+                    // Close it if we scroll back up past it
+                    dockDoor.classList.remove('is-open');
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        doorObserver.observe(facilitySection);
+    }
+
+    // 9. Leads vía fetch (Web3Forms) — sin salir del sitio
+    const quoteForm = document.querySelector('form[action="https://api.web3forms.com/submit"]');
+    const quoteSubmitBtn = document.getElementById('quote-submit-btn');
+    if (quoteForm && quoteSubmitBtn) {
+        quoteForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!quoteForm.checkValidity()) { quoteForm.reportValidity(); return; }
+
+            const setBtnState = (state) => {
+                quoteSubmitBtn.classList.remove('btn-loading', 'btn-success', 'btn-error');
+                if (state) quoteSubmitBtn.classList.add(state);
+                quoteSubmitBtn.disabled = (state === 'btn-loading' || state === 'btn-success');
+            };
+
+            // Honeypot: descarte silencioso (finge éxito, no envía)
+            if (quoteForm.botcheck && quoteForm.botcheck.checked) { setBtnState('btn-success'); return; }
+
+            setBtnState('btn-loading');
+            try {
+                const res = await fetch(quoteForm.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(quoteForm)
+                });
+                const success = res.ok;
+                setBtnState(success ? 'btn-success' : 'btn-error');
+                if (success) {
+                    // Scroll suave al form para que el usuario vea la confirmación
+                    setTimeout(() => {
+                        quoteForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
+                }
+            } catch {
+                setBtnState('btn-error');
+            }
+        });
+    }
+
+    // 11. Form adaptativo: ruta obligatoria en flete + turnaround en transload
+    if (quoteForm) {
+        const serviceSelect = quoteForm.querySelector('[name="service_type"]');
+        const FREIGHT_SERVICES = ['transload', 'crossdock'];
+        const frequencyGroup = document.getElementById('frequency-group');
+        const turnaroundGroup = document.getElementById('turnaround-group');
+        const syncServiceFields = () => {
+            const value = serviceSelect.value;
+            const needRoute = FREIGHT_SERVICES.includes(value);
+            const isTransload = value === 'transload';
+
+            // Ruta obligatoria solo en servicios de flete
+            ['shipping_from', 'destination_country', 'destination_city'].forEach(n => {
+                const field = quoteForm.querySelector(`[name="${n}"]`);
+                if (!field) return;
+                if (needRoute) field.setAttribute('required', '');
+                else field.removeAttribute('required');
+                const wrap = field.closest('.relative');
+                const tag = wrap ? wrap.querySelector('.opt-tag') : null;
+                if (tag) tag.classList.toggle('hidden', needRoute);
+            });
+
+            // Transload → turnaround (tier de precio); resto → frequency
+            if (frequencyGroup && turnaroundGroup) {
+                frequencyGroup.classList.toggle('hidden', isTransload);
+                turnaroundGroup.classList.toggle('hidden', !isTransload);
+                const freqAnchor = frequencyGroup.querySelector('input[value="one_time"]');
+                const turnAnchor = turnaroundGroup.querySelector('input[value="same_day"]');
+                if (freqAnchor) {
+                    if (isTransload) freqAnchor.removeAttribute('required');
+                    else freqAnchor.setAttribute('required', '');
+                }
+                if (turnAnchor) {
+                    if (isTransload) turnAnchor.setAttribute('required', '');
+                    else turnAnchor.removeAttribute('required');
+                }
+                // Sin valores residuales de grupos ocultos en el lead
+                frequencyGroup.querySelectorAll('input').forEach(r => { if (isTransload) r.checked = false; });
+                turnaroundGroup.querySelectorAll('input').forEach(r => { if (!isTransload) r.checked = false; });
+            }
+        };
+        if (serviceSelect) {
+            serviceSelect.addEventListener('change', syncServiceFields);
+            syncServiceFields();
+        }
+    }
+
+    // 10. Bilingual Toggle (EN / ES)
+    let currentLang = 'en';
+    const toggleDesktop = document.getElementById('lang-toggle-desktop');
+    const toggleMobile = document.getElementById('lang-toggle-mobile');
+    const translatableElements = document.querySelectorAll('[data-es]');
+
+    function setLanguage(lang) {
+        if (currentLang === lang) return;
+        currentLang = lang;
+
+        // Update Elements
+        translatableElements.forEach(el => {
+            if (lang === 'es') {
+                // Save original English text if not already saved
+                if (!el.hasAttribute('data-en')) {
+                    el.setAttribute('data-en', el.innerHTML);
+                }
+                el.innerHTML = el.getAttribute('data-es');
+            } else {
+                // Restore original English text
+                if (el.hasAttribute('data-en')) {
+                    el.innerHTML = el.getAttribute('data-en');
+                }
+            }
+        });
+
+        // Update Toggles UI
+        const toggles = [
+            { en: document.getElementById('lang-en-desktop'), es: document.getElementById('lang-es-desktop') },
+            { en: document.getElementById('lang-en-mobile'), es: document.getElementById('lang-es-mobile') }
+        ];
+
+        // Update ALL toggle buttons (desktop + mobile)
+        const allToggles = document.querySelectorAll('#lang-toggle-desktop, #lang-toggle-mobile');
+        allToggles.forEach(toggle => {
+            const enSpan = toggle.querySelector('[id$="-en-desktop"], [id$="-en-mobile"]');
+            const esSpan = toggle.querySelector('[id$="-es-desktop"], [id$="-es-mobile"]');
+            if (!enSpan || !esSpan) return;
+            if (lang === 'es') {
+                esSpan.classList.add('text-accent');
+                enSpan.classList.remove('text-accent');
+            } else {
+                enSpan.classList.add('text-accent');
+                esSpan.classList.remove('text-accent');
+            }
+        });
+
+        // Refresh icons after language change (Lucide re-renders)
+        refreshIcons();
+    }
+
+    if (toggleDesktop) {
+        toggleDesktop.addEventListener('click', () => {
+            setLanguage(currentLang === 'en' ? 'es' : 'en');
+        });
+    }
+    if (toggleMobile) {
+        toggleMobile.addEventListener('click', () => {
+            setLanguage(currentLang === 'en' ? 'es' : 'en');
+        });
+    }
+});

@@ -1,17 +1,59 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Marquee from "../components/Marquee.astro";
+import Rates from "../components/Rates.astro";
+import Estimator from "../components/Estimator.astro";
+import Services from "../components/Services.astro";
+import Facility from "../components/Facility.astro";
+import WhyPremier from "../components/WhyPremier.astro";
+import Faq from "../components/Faq.astro";
+import Quote from "../components/Quote.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Premier Warehouse & Logistics Management">
+    <main>
+        
+        <Hero isEs={false} />
+        <Marquee isEs={false} />
+        <Rates isEs={false} />
+        <Estimator isEs={false} />
+        <Services isEs={false} />
+        <Facility isEs={false} />
+        <WhyPremier isEs={false} />
+
+        <!-- SCHEMA AI-READY (FAQ EN INGLÉS) -->
+        <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What are your operating hours?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Flexible hours of operation. Contact us to schedule a meeting with a certified logistics consultant." }
+            },
+            {
+              "@type": "Question",
+              "name": "Where are you located?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Our facility is strategically located in Miami at 3600 NW 114th Ave, Unit A, Doral, FL 33178." }
+            },
+            {
+              "@type": "Question",
+              "name": "What logistics services do you offer?",
+              "acceptedAnswer": { "@type": "Answer", "text": "We offer comprehensive solutions including short and long-term storage, Cross-Docking / Transload services, order fulfillment, Nationwide FTL/LTL, and Container Drayage." }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you offer customs clearance?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes — for importers, Customs Clearance Fees are waived." }
+            }
+          ]
+        }
+        </script>
+
+        <Faq isEs={false} />
+        <Quote isEs={false} />
+
+    </main>
+</Layout>

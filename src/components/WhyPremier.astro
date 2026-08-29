@@ -1,0 +1,50 @@
+---
+interface Props {
+  isEs?: boolean;
+}
+const { isEs = false } = Astro.props;
+---
+
+<section class="py-16 md:py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        
+        <div class="mb-16 reveal">
+            <span class="stencil-text text-slate-400 mb-4 block">{isEs ? 'Nuestra Diferencia' : 'Our Difference'}</span>
+            <h2 class="text-4xl md:text-5xl font-bold font-display">{isEs ? 'Por Qué Elegir Premier' : 'Why Choose Premier'}</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 h-full flex flex-col items-center text-center hover:border-accent transition-colors group reveal">
+                <div class="w-16 h-16 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
+                    <i data-lucide="award" class="w-8 h-8 text-slate-600 group-hover:text-accent transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 font-display">{isEs ? 'Propiedad de Mujeres' : 'Woman Owned'}</h3>
+                <p class="text-slate-600 text-sm">{isEs ? 'Pequeña empresa certificada propiedad de mujeres.' : 'Certified Woman Owned Small Business.'}</p>
+            </div>
+            
+            <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 h-full flex flex-col items-center text-center hover:border-accent transition-colors group reveal reveal-delay-100">
+                <div class="w-16 h-16 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
+                    <i data-lucide="briefcase" class="w-8 h-8 text-slate-600 group-hover:text-accent transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 font-display">{isEs ? 'Más de 25 Años' : '25+ Years'}</h3>
+                <p class="text-slate-600 text-sm">{isEs ? 'De experiencia. Conocemos los retos y cómo resolverlos.' : 'Of combined experience. We know logistics challenges and how to solve them.'}</p>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 h-full flex flex-col items-center text-center hover:border-accent transition-colors group reveal reveal-delay-200">
+                <div class="w-16 h-16 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
+                    <i data-lucide="check-circle" class="w-8 h-8 text-slate-600 group-hover:text-accent transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 font-display">{isEs ? 'Llave en Mano' : 'Turn-key Warehouse'}</h3>
+                <p class="text-slate-600 text-sm">{isEs ? 'Soluciones integrales para simplificar tu logística.' : 'End-to-end comprehensive solutions to simplify your supply chain.'}</p>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 h-full flex flex-col items-center text-center hover:border-accent transition-colors group reveal reveal-delay-300">
+                <div class="w-16 h-16 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
+                    <i data-lucide="heart-handshake" class="w-8 h-8 text-slate-600 group-hover:text-accent transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 font-display">{isEs ? 'Tranquilidad' : 'Peace of Mind'}</h3>
+                <p class="text-slate-600 text-sm">{isEs ? 'Tu carga segura y organizada. Nosotros nos ocupamos del estrés.' : 'Your cargo secure, organized, and accessible. We take care of the stress.'}</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+---
+interface Props {
+  isEs?: boolean;
+}
+const { isEs = false } = Astro.props;
+
+// Guardamos las traducciones en variables para que el HTML de abajo quede más limpio
+const crossDock = isEs ? 'CROSS DOCKING' : 'CROSS DOCK';
+const transload = isEs ? 'TRANSBORDO' : 'TRANSLOAD';
+const pickPack = 'PICK & PACK';
+const storage = isEs ? 'ALMACENAJE' : 'STORAGE';
+---
+
+<div class="py-8 bg-accent text-white border-y border-accent-dark group marquee-container">
+    <div class="marquee-content gap-8 items-center">
+        <!-- Bloque 1 -->
+        <div class="flex items-center gap-8">
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{crossDock}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{transload}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{pickPack}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{storage}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+        </div>
+        <!-- Bloque 2 -->
+        <div class="flex items-center gap-8">
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{crossDock}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{transload}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{pickPack}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{storage}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+        </div>
+        <!-- Bloque 3 -->
+        <div class="flex items-center gap-8">
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{crossDock}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{transload}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{pickPack}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+            <span class="font-display font-bold text-xl md:text-4xl opacity-90 group-hover:opacity-100 transition-opacity">{storage}</span>
+            <span class="w-3 h-3 bg-white/30 rounded-full"></span>
+        </div>
+    </div>
+</div>

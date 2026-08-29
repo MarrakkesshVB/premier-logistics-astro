@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Marquee from "../../components/Marquee.astro";
+import Rates from "../../components/Rates.astro";
+import Estimator from "../../components/Estimator.astro";
+import Services from "../../components/Services.astro";
+import Facility from "../../components/Facility.astro";
+import WhyPremier from "../../components/WhyPremier.astro";
+import Faq from "../../components/Faq.astro";
+import Quote from "../../components/Quote.astro";
+---
+
+<Layout 
+    title="Premier Warehouse & Logistics — Almacenaje 3PL en Doral, Miami" 
+    lang="es" 
+    description="Almacenaje 3PL en Doral, Miami. Desde $15.00/pallet/mes. Cross dock, transbordo, pick & pack y fulfillment. Instalación segura 24/7. Hablamos Español."
+>
+    <main>
+
+        <Hero isEs={true} />
+        <Marquee isEs={true} />
+        <Rates isEs={true} />
+        <Estimator isEs={true} />
+        <Services isEs={true} />
+        <Facility isEs={true} />
+        <WhyPremier isEs={true} />
+
+        <!-- SCHEMA AI-READY (FAQ EN ESPAÑOL) -->
+        <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Cuáles son sus horarios de operación?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Horarios de operación flexibles. Contáctanos para agendar una reunión con un consultor logístico certificado." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Dónde están ubicados?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Nuestras instalaciones están ubicadas en Miami en: 3600 NW 114th Ave, Unit A, Doral, FL 33178." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué servicios logísticos ofrecen?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ofrecemos soluciones integrales: Almacenamiento a corto y largo plazo, Cross-Docking / Transload, procesamiento de pedidos, Full Truckload (FTL) / LTL, y Drayage de contenedores." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Ofrecen despacho de aduanas?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Sí — para importadores, los cargos de despacho de aduana están exentos." }
+            }
+          ]
+        }
+        </script>
+
+        <Faq isEs={true} />
+        <Quote isEs={true} />
+
+    </main>
+</Layout>

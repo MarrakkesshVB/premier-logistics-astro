@@ -1,0 +1,97 @@
+---
+interface Props {
+  isEs?: boolean;
+}
+
+const { isEs = false } = Astro.props;
+---
+
+<section id="hero" class="relative h-svh min-h-[640px] flex flex-col justify-center overflow-hidden bg-slate-100 pt-4 pb-4 md:pb-6">
+    <img src="/assets/background.webp" alt="" aria-hidden="true" width="2560" height="1440" decoding="async" class="hero-ambient" />
+    <div class="absolute inset-0 bg-white/45"></div>
+
+    <div class="w-full h-full px-4 sm:px-6 lg:px-8 flex flex-col">
+    <div class="hero-panel relative z-20 w-full max-w-[1800px] mx-auto rounded-[2rem] overflow-hidden h-full flex flex-col">
+        <img src="/assets/background.webp" alt="Premier Warehouse facility" width="2560" height="1440" fetchpriority="high" decoding="async" class="hero-photo" />
+        <div class="hero-scrim" aria-hidden="true"></div>
+        
+        <a href={isEs ? "/es/" : "/"} class="logo-tab absolute left-1/2 -translate-x-1/2 top-0 z-30 flex items-center gap-3 group px-6 md:px-8 py-4" aria-label="Premier Warehouse">
+            <span class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden flex items-center justify-center shrink-0">
+                <img src="/assets/logo.webp" alt="Premier Warehouse logo" width="56" height="56" class="w-16 h-16 md:w-20 md:h-20 object-contain" decoding="async" />
+            </span>
+            <span class="font-display font-bold tracking-tight text-xl hidden md:block text-white">Premier Warehouse</span>
+        </a>
+        
+        <div id="hero-content" class="relative z-20 w-full px-6 lg:px-10 pt-28 md:pt-32 pb-2 text-center flex-none">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <span class="w-10 h-[2px] bg-accent"></span>
+                    <span class="stencil-text text-accent">{isEs ? 'ALMACENAJE Y LOGÍSTICA PREMIER' : 'PREMIER WAREHOUSE & LOGISTICS'}</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] text-primary mb-8 font-display">
+                    <span class="reveal inline-block reveal-delay-100">{isEs ? 'ALMACENAJE' : 'WAREHOUSING'}</span><br />
+                    <span class="reveal inline-block reveal-delay-200"><span>{isEs ? 'EN' : 'IN'}</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-red-400">MIAMI</span></span>
+                </h1>
+
+                <div class="reveal reveal-delay-400 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#quote" class="w-full sm:w-auto bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group btn-glow">
+                        <span>{isEs ? 'Cotizar Ahora' : 'Get a Quote'}</span>
+                        <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                    <a href="#estimator" class="w-full sm:w-auto bg-white/85 hover:bg-white text-primary px-8 py-4 rounded-xl font-bold transition-all border border-white/70 flex items-center justify-center gap-2">
+                        <span>{isEs ? 'Estimador de Costos' : 'Cost Estimator'}</span>
+                        <i data-lucide="calculator" class="w-5 h-5"></i>
+                    </a>
+                </div>
+
+                <div class="mt-8 md:mt-10 flex flex-wrap items-center justify-center gap-3 reveal reveal-delay-500">
+                    <div class="flex items-center gap-2 bg-white/80 border border-slate-200 px-3 py-1.5 rounded-md text-xs font-bold text-slate-600 stencil-text">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                        {isEs ? 'Seguridad 24/7' : '24/7 Security'}
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/80 border border-slate-200 px-3 py-1.5 rounded-md text-xs font-bold text-slate-600 stencil-text">
+                        <div class="w-2 h-2 rounded-full bg-accent"></div>
+                        Hablamos Español
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/80 border border-slate-200 px-3 py-1.5 rounded-md text-xs font-bold text-slate-600 stencil-text">
+                        <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                        Fulfillment
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-slate-950/75 via-slate-950/30 to-transparent pointer-events-none" aria-hidden="true"></div>
+
+        <div class="relative z-20 mt-auto w-full px-6 lg:px-10 pb-6 md:pb-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-6xl mx-auto">
+                <div class="glass-card-stat p-5 md:p-6 text-center">
+                    <i data-lucide="map" class="w-6 h-6 text-accent block mx-auto mb-3"></i>
+                    <div class="font-mono text-2xl md:text-3xl font-bold text-white tabular-nums" style="text-shadow: 0 1px 2px rgba(0,0,0,0.4);">30,000</div>
+                    <div class="stencil-text text-xs text-white/80 mt-1">{isEs ? 'PIES CUADRADOS' : 'SQ FT'}</div>
+                    <p class="text-xs md:text-sm text-white/75 mt-2 font-medium">{isEs ? 'Instalación Certificada' : 'Certified Facility'}</p>
+                </div>
+                <div class="glass-card-stat p-5 md:p-6 text-center">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-accent block mx-auto mb-3"></i>
+                    <div class="font-mono text-2xl md:text-3xl font-bold text-white tabular-nums" style="text-shadow: 0 1px 2px rgba(0,0,0,0.4);">24/7</div>
+                    <div class="stencil-text text-xs text-white/80 mt-1">{isEs ? 'SEGURIDAD' : 'SECURITY'}</div>
+                    <p class="text-xs md:text-sm text-white/75 mt-2 font-medium">{isEs ? 'Vigilancia de última generación' : 'State-of-the-art surveillance'}</p>
+                </div>
+                <div class="glass-card-stat p-5 md:p-6 text-center">
+                    <i data-lucide="door-open" class="w-6 h-6 text-accent block mx-auto mb-3"></i>
+                    <div class="font-mono text-2xl md:text-3xl font-bold text-white">{isEs ? 'Andén' : 'Dock'}</div>
+                    <div class="stencil-text text-xs text-white/80 mt-1">{isEs ? 'ALTURA' : 'HEIGHT'}</div>
+                    <p class="text-xs md:text-sm text-white/75 mt-2 font-medium">{isEs ? 'Bodega a altura de andén' : 'Dock-height warehouse'}</p>
+                </div>
+                <div class="glass-card-stat p-5 md:p-6 text-center">
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 text-accent block mx-auto mb-3"></i>
+                    <div class="font-mono text-2xl md:text-3xl font-bold text-white">{isEs ? 'Rampas' : 'Ramps'}</div>
+                    <div class="stencil-text text-xs text-white/80 mt-1">{isEs ? 'ACCESO' : 'ACCESS'}</div>
+                    <p class="text-xs md:text-sm text-white/75 mt-2 font-medium">{isEs ? 'Rampas y estacionamiento privado' : 'Ramps & private parking'}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

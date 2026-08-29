@@ -1,0 +1,64 @@
+---
+interface Props {
+  isEs?: boolean;
+}
+const { isEs = false } = Astro.props;
+---
+
+<section class="py-16 md:py-24 bg-slate-100" id="faq">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="stencil-text text-accent mb-4 block">{isEs ? 'PREGUNTAS FRECUENTES' : 'FAQS'}</span>
+            <h2 class="text-4xl md:text-5xl font-bold font-display">{isEs ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}</h2>
+        </div>
+        <div class="space-y-4">
+            <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden reveal">
+                <summary class="flex justify-between items-center font-bold font-display cursor-pointer list-none p-6 text-lg">
+                    <span>{isEs ? '¿Cuáles son sus horarios de operación?' : 'What are your operating hours?'}</span>
+                    <span class="transition-transform group-open:rotate-180">
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-accent"></i>
+                    </span>
+                </summary>
+                <div class="p-6 pt-0 text-slate-600 border-t border-slate-100 mt-2">
+                    <p>{isEs ? 'Horarios de operación flexibles. Contáctanos para agendar una reunión con un consultor logístico certificado.' : 'Flexible hours of operation. Contact us to schedule a meeting with a certified logistics consultant.'}</p>
+                </div>
+            </details>
+            
+            <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden reveal reveal-delay-100">
+                <summary class="flex justify-between items-center font-bold font-display cursor-pointer list-none p-6 text-lg">
+                    <span>{isEs ? '¿Dónde están ubicados?' : 'Where are you located?'}</span>
+                    <span class="transition-transform group-open:rotate-180">
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-accent"></i>
+                    </span>
+                </summary>
+                <div class="p-6 pt-0 text-slate-600 border-t border-slate-100 mt-2">
+                    <p>{isEs ? 'Nuestras instalaciones están ubicadas en Miami en: 3600 NW 114th Ave, Unit A, Doral, FL 33178.' : 'Our facility is strategically located in Miami at 3600 NW 114th Ave, Unit A, Doral, FL 33178.'}</p>
+                </div>
+            </details>
+
+            <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden reveal reveal-delay-200">
+                <summary class="flex justify-between items-center font-bold font-display cursor-pointer list-none p-6 text-lg">
+                    <span>{isEs ? '¿Qué servicios logísticos ofrecen?' : 'What logistics services do you offer?'}</span>
+                    <span class="transition-transform group-open:rotate-180">
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-accent"></i>
+                    </span>
+                </summary>
+                <div class="p-6 pt-0 text-slate-600 border-t border-slate-100 mt-2">
+                    <p>{isEs ? 'Ofrecemos soluciones integrales: Almacenamiento a corto y largo plazo, Cross-Docking / Transload, procesamiento de pedidos, Full Truckload (FTL) / LTL, y Drayage de contenedores.' : 'We offer comprehensive solutions including short and long-term storage, Cross-Docking / Transload services, order fulfillment, Nationwide FTL/LTL, and Container Drayage.'}</p>
+                </div>
+            </details>
+            
+            <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden reveal">
+                <summary class="flex justify-between items-center font-bold font-display cursor-pointer list-none p-6 text-lg">
+                    <span>{isEs ? '¿Ofrecen despacho de aduanas?' : 'Do you offer customs clearance?'}</span>
+                    <span class="transition-transform group-open:rotate-180">
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-accent"></i>
+                    </span>
+                </summary>
+                <div class="p-6 pt-0 text-slate-600 border-t border-slate-100 mt-2">
+                    <p>{isEs ? 'Sí — para importadores, los cargos de despacho de aduana están exentos.' : 'Yes — for importers, Customs Clearance Fees are waived.'}</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>

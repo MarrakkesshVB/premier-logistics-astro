@@ -1,0 +1,220 @@
+---
+interface Props {
+  title?: string;
+  lang?: string;
+  description?: string;
+}
+
+const {
+  title = "Premier Warehouse & Logistics Management — Doral, Miami 3PL",
+  lang = "en",
+  description = "3PL warehousing in Doral, Miami. Storage from $15.00/pallet/month, cross dock, transload, pick & pack and e-commerce fulfillment. 24/7 secured facility. Hablamos Español."
+} = Astro.props;
+
+// Variable de entorno para saber el idioma actual
+const isEs = lang === 'es';
+
+import "../styles/global.css";
+import "../styles/styles.css";
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/webp" href="/assets/logo.webp" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Premier Warehouse & Logistics Management" />
+    <meta property="og:title" content="Premier Warehouse & Logistics — Warehousing in Miami" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://marrakkesshvb.github.io/premier-warehouse/" />
+    <meta property="og:image" content="https://marrakkesshvb.github.io/premier-warehouse/assets/background.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://marrakkesshvb.github.io/premier-warehouse/" />
+
+    <!-- SEO Bilingüe Real (i18n) -->
+    <link rel="alternate" hreflang="en" href="https://marrakkesshvb.github.io/premier-warehouse/" />
+    <link rel="alternate" hreflang="es" href="https://marrakkesshvb.github.io/premier-warehouse/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://marrakkesshvb.github.io/premier-warehouse/" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://marrakkesshvb.github.io/premier-warehouse/#business",
+      "name": "Premier Warehouse & Logistics Management",
+      "legalName": "Premier Warehouse & Logistics Management Corp.",
+      "description": "3PL warehousing in Doral, Miami: storage, cross dock, transload, pick & pack and e-commerce fulfillment in a 24/7 secured, woman-owned facility.",
+      "url": "https://marrakkesshvb.github.io/premier-warehouse/",
+      "telephone": "+1-305-877-5964",
+      "email": "info@mypremierwarehouse.com",
+      "logo": "https://marrakkesshvb.github.io/premier-warehouse/assets/logo.webp",
+      "image": "https://marrakkesshvb.github.io/premier-warehouse/assets/background.webp",
+      "priceRange": "$9.00 - $250.00",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3600 NW 114th Ave, Unit A",
+        "addressLocality": "Doral",
+        "addressRegion": "FL",
+        "postalCode": "33178",
+        "addressCountry": "US"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 25.8069047, "longitude": -80.3823901 }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <script is:inline src="/js/lucide.min.js"></script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 overflow-x-hidden antialiased relative">
+    
+    <!-- NAVBAR GLOBAL -->
+    <header id="navbar" class="fixed top-0 inset-x-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none transition-all duration-300">
+        <div class="pointer-events-none w-full max-w-[1800px] mx-auto rounded-2xl nav-glass px-6 lg:px-10 flex justify-between items-center gap-4 py-3">
+            <div class="pointer-events-auto flex items-center">
+                <nav class="hidden lg:flex items-center gap-8 xl:gap-14">
+                    <a href="#services" class="text-sm font-bold text-slate-600 hover:text-accent transition-colors uppercase tracking-wide">{isEs ? 'Servicios' : 'Services'}</a>
+                    <a href="#rates" class="text-sm font-bold text-slate-600 hover:text-accent transition-colors uppercase tracking-wide">{isEs ? 'Tarifas' : 'Rates'}</a>
+                    <a href="#facility" class="text-sm font-bold text-slate-600 hover:text-accent transition-colors uppercase tracking-wide">{isEs ? 'Bodega' : 'Facility'}</a>
+                </nav>
+                <a href={isEs ? "/" : "/es/"} class="lg:hidden flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors bg-slate-100 px-2 py-1 rounded-md border border-slate-200">
+                    <span class={!isEs ? "text-accent transition-colors" : "transition-colors hover:text-slate-800"}>EN</span>
+                    <span class="text-slate-300">|</span>
+                    <span class={isEs ? "text-accent transition-colors" : "transition-colors hover:text-slate-800"}>ES</span>
+                </a>
+            </div>
+            <div class="pointer-events-auto flex items-center gap-5">
+                <div class="hidden lg:flex items-center gap-5">
+                    <a href={isEs ? "/" : "/es/"} class="flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors bg-slate-100 px-2 py-1 rounded-md border border-slate-200">
+                        <span class={!isEs ? "text-accent transition-colors" : "transition-colors hover:text-slate-800"}>EN</span>
+                        <span class="text-slate-300">|</span>
+                        <span class={isEs ? "text-accent transition-colors" : "transition-colors hover:text-slate-800"}>ES</span>
+                    </a>
+                    <a href="tel:3058775964" class="flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-accent transition-colors">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        <span>305.877.5964</span>
+                    </a>
+                    <a href="tel:3054295076" class="hidden xl:flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-accent transition-colors">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        <span>305.429.5076</span>
+                    </a>
+                    <a href="#quote" class="bg-accent hover:bg-accent-dark text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-all btn-glow">
+                        {isEs ? 'Cotizar Ahora' : 'Get a Quote'}
+                    </a>
+                </div>
+                <button id="menu-btn" class="lg:hidden p-2 text-slate-700 focus:outline-none" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <i id="menu-icon" data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENU MOVIL GLOBAL -->
+    <div id="mobile-menu" class="hidden opacity-0 -translate-y-4 fixed inset-0 z-40 bg-white/95 backdrop-blur-md pt-24 px-6 pb-8 flex flex-col lg:hidden overflow-y-auto transition-all duration-200">
+        <nav class="flex flex-col gap-6 mb-8">
+            <a href="#services" class="text-2xl font-display font-bold text-slate-800 border-b border-slate-100 pb-4">{isEs ? 'Servicios' : 'Services'}</a>
+            <a href="#rates" class="text-2xl font-display font-bold text-slate-800 border-b border-slate-100 pb-4">{isEs ? 'Tarifas' : 'Rates'}</a>
+            <a href="#facility" class="text-2xl font-display font-bold text-slate-800 border-b border-slate-100 pb-4">{isEs ? 'Bodega' : 'Facility'}</a>
+        </nav>
+        <div class="mt-auto space-y-4">
+            <a href="#quote" class="w-full bg-accent text-white py-4 rounded-xl text-center font-bold text-lg flex items-center justify-center gap-2">
+                {isEs ? 'Cotizar Ahora' : 'Get a Quote'}
+            </a>
+            <a href="tel:3058775964" class="w-full bg-slate-50 border border-slate-200 text-slate-800 py-4 rounded-xl text-center font-bold text-lg flex items-center justify-center gap-2">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+                <span>{isEs ? 'Llámanos Ahora' : 'Call 305.877.5964'}</span>
+            </a>
+            <a href="tel:3054295076" class="w-full bg-slate-50 border border-slate-200 text-slate-800 py-4 rounded-xl text-center font-bold text-lg flex items-center justify-center gap-2">
+                <i data-lucide="phone-call" class="w-5 h-5"></i>
+                <span>{isEs ? 'Línea alternativa' : 'Alt: 305.429.5076'}</span>
+            </a>
+            <div class="flex justify-center">
+                <span class="bg-emerald-500/10 text-emerald-700 text-sm font-bold px-4 py-2 rounded-full border border-emerald-200">Hablamos Español</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- EL CONTENIDO DE CADA PÁGINA SE INYECTA AQUÍ -->
+    <slot />
+
+    <!-- FOOTER GLOBAL -->
+    <footer class="bg-primary text-slate-300 py-12 md:py-16 border-t-4 border-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div class="lg:col-span-2 flex flex-col sm:flex-row items-center gap-8 md:gap-10">
+                <span class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden flex items-center justify-center shrink-0">
+                    <img src="/assets/logo.webp" alt="Premier Warehouse logo" width="256" height="256" class="w-64 h-64 md:w-[22rem] md:h-[22rem] object-contain" loading="lazy" decoding="async" />
+                </span>
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-6 font-display">Premier Warehouse & Logistics Management</h2>
+                    <p class="mb-6 max-w-md text-slate-400">
+                        {isEs ? 'Pequeña empresa propiedad de mujeres. Más de 25 años de experiencia combinada.' : 'Woman Owned Small Business. Over 25 years of combined experience.'}
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs font-bold border border-slate-700">MyFDA++</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs font-bold border border-slate-700">TSA</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs font-bold border border-slate-700">Doral Chamber</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs font-bold border border-slate-700">FCBF</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-white font-bold mb-6 stencil-text">{isEs ? 'Contacto' : 'Contact'}</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                        <a href="tel:3058775964" class="hover:text-white transition-colors font-bold">305.877.5964</a>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="phone-call" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                        <a href="tel:3054295076" class="hover:text-white transition-colors font-bold">305.429.5076</a>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                        <a href="mailto:info@mypremierwarehouse.com" class="hover:text-white transition-colors">info@mypremierwarehouse.com</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-white font-bold mb-6 stencil-text">{isEs ? 'Ubicación' : 'Location'}</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                        <span>
+                            <a href="https://www.google.com/maps/..." target="_blank" rel="noopener" class="hover:text-white transition-colors font-bold">3600 NW 114th Ave, Unit A<br/>Doral, FL 33178</a>
+                            <br/>
+                            <span class="text-slate-400">{isEs ? 'A minutos de MIA y el Puerto de Miami' : 'Minutes from MIA & Port of Miami'}</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-3 mt-4">
+                        <i data-lucide="clock" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                        <span>{isEs ? 'Horarios de operación flexibles' : 'Flexible hours of operation'}<br/>{isEs ? 'Seguridad 24/7' : '24/7 Security'}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-slate-800 text-sm text-center text-slate-500">
+            <p>&copy; <span id="year">2026</span> Premier Warehouse & Logistics Management Corp. {isEs ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+        </div>
+    </footer>
+
+    <!-- FLOTANTE GLOBAL -->
+    <div id="floating-contact" class="fixed bottom-6 right-6 z-50 flex items-center gap-4 translate-y-24 opacity-0 transition-all duration-500">
+        <div class="bg-white px-4 py-2 rounded-full shadow-lg border border-slate-200 hidden md:block">
+            <span class="text-sm font-bold text-slate-700">{isEs ? '¿Necesitas ayuda?' : 'Need help?'}</span>
+        </div>
+        <a href="tel:3058775964" class="w-14 h-14 bg-accent hover:bg-accent-dark text-white rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110" aria-label="Call now">
+            <i data-lucide="phone" class="w-6 h-6 animate-pulse"></i>
+        </a>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

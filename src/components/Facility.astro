@@ -1,0 +1,93 @@
+---
+interface Props {
+  isEs?: boolean;
+}
+const { isEs = false } = Astro.props;
+---
+
+<section id="facility" class="py-16 md:py-24 bg-white text-primary relative overflow-hidden">
+    <div id="dock-door" class="dock-door flex items-center justify-center">
+        <div class="stencil-text text-white/20 text-5xl md:text-8xl tracking-widest font-display transform -rotate-12 select-none">DOCK 01</div>
+    </div>
+
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full fill-current text-slate-300">
+            <polygon points="100,0 0,100 100,100" />
+        </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="reveal">
+                    <span class="stencil-text text-accent mb-4 block">{isEs ? 'Sede Principal' : 'Headquarters'}</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 font-display">{isEs ? 'Instalación Certificada en Doral' : 'Certified Facility in Doral'}</h2>
+                    <p class="text-lg md:text-xl text-slate-600 mb-10 md:mb-12 max-w-lg">
+                        {isEs ? 'Equipada para manejar operaciones de alto volumen con los más estrictos estándares.' : 'Equipped to handle high-volume logistics operations with the strictest security and efficiency standards.'}
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8 mb-12">
+                    <div class="reveal">
+                        <i data-lucide="map" class="w-8 h-8 text-accent mb-4"></i>
+                        <div class="text-3xl font-mono font-bold mb-1">30,000</div>
+                        <div class="text-sm text-slate-500 font-bold uppercase">{isEs ? 'pies cuadrados' : 'sq ft'}</div>
+                        <p class="text-sm mt-2 font-medium text-slate-700">{isEs ? 'Instalación Certificada' : 'Certified Facility'}</p>
+                    </div>
+                    <div class="reveal reveal-delay-100">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-accent mb-4"></i>
+                        <div class="text-3xl font-mono font-bold mb-1">24/7</div>
+                        <div class="text-sm text-slate-500 font-bold uppercase">{isEs ? 'Seguridad' : 'Security'}</div>
+                        <p class="text-sm mt-2 font-medium text-slate-700">{isEs ? 'Vigilancia de última generación' : 'State-of-the-art surveillance'}</p>
+                    </div>
+                    <div class="reveal">
+                        <i data-lucide="door-open" class="w-8 h-8 text-accent mb-4"></i>
+                        <div class="text-3xl font-mono font-bold mb-1">{isEs ? 'Andén' : 'Dock'}</div>
+                        <div class="text-sm text-slate-500 font-bold uppercase">{isEs ? 'Altura' : 'Height'}</div>
+                        <p class="text-sm mt-2 font-medium text-slate-700">{isEs ? 'Bodega a altura de andén' : 'Dock-height warehouse'}</p>
+                    </div>
+                    <div class="reveal reveal-delay-100">
+                        <i data-lucide="arrow-up-right" class="w-8 h-8 text-accent mb-4"></i>
+                        <div class="text-3xl font-mono font-bold mb-1">{isEs ? 'Rampas' : 'Ramps'}</div>
+                        <div class="text-sm text-slate-500 font-bold uppercase">{isEs ? 'Acceso' : 'Access'}</div>
+                        <p class="text-sm mt-2 font-medium text-slate-700">{isEs ? 'Rampas y estacionamiento privado' : 'Ramps & private parking'}</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-8 border-t border-slate-200 reveal">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="calendar-check" class="w-5 h-5 text-accent shrink-0"></i>
+                        <span class="text-sm font-bold text-slate-700">{isEs ? 'Sala de reuniones' : 'Meeting room'}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="wifi" class="w-5 h-5 text-accent shrink-0"></i>
+                        <span class="text-sm font-bold text-slate-700">{isEs ? 'Wi-Fi gratis' : 'Free Wi-Fi'}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="parking-circle" class="w-5 h-5 text-accent shrink-0"></i>
+                        <span class="text-sm font-bold text-slate-700">{isEs ? 'Estacionamiento privado gratis' : 'Free private parking'}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="briefcase" class="w-5 h-5 text-accent shrink-0"></i>
+                        <span class="text-sm font-bold text-slate-700">{isEs ? 'Espacios de trabajo flexibles' : 'Flex working space'}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 h-[600px] reveal">
+                <div class="space-y-4 h-full">
+                    <div class="bg-slate-200 rounded-2xl h-1/2 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80" alt="Warehouse Interior" width="800" height="600" loading="lazy" decoding="async" class="object-cover w-full h-full" />
+                    </div>
+                    <div class="bg-primary rounded-2xl h-1/2 p-8 text-white flex flex-col justify-end">
+                        <span class="stencil-text text-accent mb-2">{isEs ? 'Ubicación' : 'Location'}</span>
+                        <h3 class="text-2xl font-bold font-display">Miami, FL</h3>
+                    </div>
+                </div>
+                <div class="bg-slate-200 rounded-2xl h-full overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80" alt="Logistics Operations" width="800" height="1200" loading="lazy" decoding="async" class="object-cover w-full h-full" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
