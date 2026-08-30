@@ -25,21 +25,22 @@ const services = [
 
     <div class="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Vitrina navy que envuelve header + carrusel (como la referencia) -->
-        <div class="relative rounded-[2rem] bg-primary p-6 md:p-10 lg:p-14 overflow-hidden">
-            <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: repeating-linear-gradient(45deg, #ffffff 0, #ffffff 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
+        <div class="relative rounded-[2rem] bg-white border border-slate-200 shadow-xl p-6 md:p-10 lg:p-14 overflow-hidden">
 
-        <!-- Header: título izquierda + flechas derecha (como la referencia) -->
-        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 md:mb-16 reveal">
-            <div class="max-w-2xl relative">
-                <span class="stencil-text text-accent mb-4 block">{isEs ? 'Operaciones CORE' : 'CORE Operations'}</span>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-display text-white">{isEs ? 'Soluciones Logísticas Llave en Mano' : 'Turn-Key Logistics Solutions'}</h2>
-                <p class="text-lg md:text-xl text-slate-400">{isEs ? 'El almacenaje 3PL líder del sur de la Florida: infraestructura optimizada para tu flujo de carga.' : "South Florida's top 3PL warehousing — optimized infrastructure for your cargo flow."}</p>
-            </div>
-            <div class="flex items-center gap-3 shrink-0">
-                <button id="svc-prev" type="button" class="w-12 h-12 rounded-full border-2 border-white/20 text-white hover:border-accent hover:text-accent transition-colors flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Servicios anteriores' : 'Previous services'}>
+        <!-- Header: texto editorial (sin flechas) -->
+        <div class="mb-12 md:mb-16 reveal">
+            <span class="stencil-text text-accent mb-4 block">{isEs ? 'Operaciones CORE' : 'CORE Operations'}</span>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-display text-primary max-w-3xl">{isEs ? 'Soluciones Logísticas Llave en Mano' : 'Turn-Key Logistics Solutions'}</h2>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl">{isEs ? 'El almacenaje 3PL líder del sur de la Florida: infraestructura optimizada para tu flujo de carga.' : "South Florida's top 3PL warehousing — optimized infrastructure for your cargo flow."}</p>
+        </div>
+
+        <!-- Flechas: flotando arriba-derecha del carrusel -->
+        <div class="flex justify-end mb-4 reveal">
+            <div class="flex items-center gap-3">
+                <button id="svc-prev" type="button" class="w-12 h-12 rounded-full border-2 border-slate-300 text-slate-600 hover:border-accent hover:text-accent transition-colors flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Servicios anteriores' : 'Previous services'}>
                     <i data-lucide="chevron-left" class="w-5 h-5"></i>
                 </button>
-                <button id="svc-next" type="button" class="w-12 h-12 rounded-full border-2 border-white/20 text-white hover:border-accent hover:text-accent transition-colors flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Más servicios' : 'More services'}>
+                <button id="svc-next" type="button" class="w-12 h-12 rounded-full border-2 border-slate-300 text-slate-600 hover:border-accent hover:text-accent transition-colors flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Más servicios' : 'More services'}>
                     <i data-lucide="chevron-right" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -48,11 +49,11 @@ const services = [
         <!-- Carrusel: 4 por vista en desktop, swipe táctil en mobile -->
         <div id="services-track" class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar py-8 -my-8 reveal">
             {services.map((s) => (
-                <article class="flex-none w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] snap-start bg-white/5 p-8 border border-white/10 hover:border-accent hover:shadow-xl transition-all group relative">
-                    <span class="stencil-text text-slate-500 mb-6 block text-xs">{s.aisle}</span>
-                    <i data-lucide={s.icon} class="w-10 h-10 mb-6 text-slate-300 group-hover:text-accent transition-colors"></i>
-                    <h3 class="text-2xl font-bold mb-3 font-display text-white">{s.title}</h3>
-                    <p class="text-slate-400">{s.desc}</p>
+                <article class="flex-none w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] snap-start bg-slate-50 p-8 border border-slate-200 hover:border-accent hover:bg-white hover:shadow-xl transition-all group relative">
+                    <span class="stencil-text text-slate-400 mb-6 block text-xs">{s.aisle}</span>
+                    <i data-lucide={s.icon} class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
+                    <h3 class="text-2xl font-bold mb-3 font-display text-primary">{s.title}</h3>
+                    <p class="text-slate-600">{s.desc}</p>
                 </article>
             ))}
         </div>
