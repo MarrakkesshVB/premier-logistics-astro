@@ -39,10 +39,10 @@ const services = [
         <!-- Flechas: flotando arriba-derecha del carrusel -->
         <div class="flex justify-end mb-4 reveal">
             <div class="flex items-center gap-3">
-                <button id="svc-prev" type="button" class="w-12 h-12 rounded-full border-2 border-slate-300 text-slate-600 hover:border-accent hover:text-accent transition-colors flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Servicios anteriores' : 'Previous services'}>
+                <button id="svc-prev" type="button" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-700 shadow-lg shadow-slate-900/10 hover:border-accent hover:text-accent hover:shadow-xl transition-all flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Servicios anteriores' : 'Previous services'}>
                     <i data-lucide="chevron-left" class="w-5 h-5"></i>
                 </button>
-                <button id="svc-next" type="button" class="w-12 h-12 rounded-full border-2 border-slate-300 text-slate-600 hover:border-accent hover:text-accent transition-colors flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Más servicios' : 'More services'}>
+                <button id="svc-next" type="button" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-700 shadow-lg shadow-slate-900/10 hover:border-accent hover:text-accent hover:shadow-xl transition-all flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Más servicios' : 'More services'}>
                     <i data-lucide="chevron-right" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -51,7 +51,7 @@ const services = [
         <!-- Carrusel: 4 por vista en desktop, swipe táctil en mobile -->
         <div id="services-track" class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar py-8 -my-8 reveal">
             {services.map((s) => (
-                <article class="flex-none w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] snap-start bg-slate-50 p-8 border border-slate-200 hover:border-accent hover:bg-white hover:shadow-xl transition-all group relative">
+                <article class="svc-card flex-none w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] snap-start p-8 border border-white/70 hover:border-accent hover:shadow-xl transition-all group relative">
                     <span class="stencil-text text-slate-400 mb-6 block text-xs">{s.aisle}</span>
                     <i data-lucide={s.icon} class="w-10 h-10 mb-6 text-accent"></i>
                     <h3 class="text-2xl font-bold mb-3 font-display text-primary">{s.title}</h3>

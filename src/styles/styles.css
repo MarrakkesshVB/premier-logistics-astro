@@ -394,6 +394,17 @@ body {
   }
 }
 
+/* Services: tarjetas vitrina — blanco translúcido que deja pasar el ambient (esmerilado sin backdrop-filter) */
+.svc-card {
+  background: rgba(255, 255, 255, 0.86);
+}
+@media (hover: hover) and (pointer: fine) {
+  .svc-card:hover { background: rgba(255, 255, 255, 0.97); }
+}
+@media (hover: none), (pointer: coarse) {
+  .svc-card:hover { background: rgba(255, 255, 255, 0.86); }
+}
+
 /* Services vitrina: ambient de bodega con blur sutil (detrás del contenido, delante del fondo blanco) */
 .svc-ambient {
   position: absolute;
