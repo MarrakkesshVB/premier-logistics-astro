@@ -21,37 +21,6 @@ import Quote from "../components/Quote.astro";
         <Services isEs={false} />
         <Facility isEs={false} />
         <WhyPremier isEs={false} />
-
-        <!-- SCHEMA AI-READY (FAQ EN INGLÉS) -->
-        <script type="application/ld+json" is:inline>
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What are your operating hours?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Flexible hours of operation. Contact us to schedule a meeting with a certified logistics consultant." }
-            },
-            {
-              "@type": "Question",
-              "name": "Where are you located?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Our facility is strategically located in Miami at 3600 NW 114th Ave, Unit A, Doral, FL 33178." }
-            },
-            {
-              "@type": "Question",
-              "name": "What logistics services do you offer?",
-              "acceptedAnswer": { "@type": "Answer", "text": "We offer comprehensive solutions including short and long-term storage, Cross-Docking / Transload services, order fulfillment, Nationwide FTL/LTL, and Container Drayage." }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you offer customs clearance?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes — for importers, Customs Clearance Fees are waived." }
-            }
-          ]
-        }
-        </script>
-
         <Faq isEs={false} />
         <Quote isEs={false} />
 

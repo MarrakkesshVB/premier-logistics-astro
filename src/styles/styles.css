@@ -284,6 +284,50 @@ body {
 
 
 
+/* FAQ acordeón exclusivo: altura animada vía grid-rows (sin medir nada) */
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-item.is-open .faq-panel {
+  grid-template-rows: 1fr;
+}
+.faq-panel p {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.faq-item.is-open .faq-panel p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.12s;
+}
+.faq-item.is-open {
+  background-color: #ffffff;
+  border-color: rgba(238, 8, 8, 0.4);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+}
+.faq-item.is-open .faq-num {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+.faq-item.is-open .faq-icon {
+  background-color: #ffffff;
+  color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px #cbd5e1;
+}
+.faq-item.is-open .faq-icon svg {
+  transform: rotate(45deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-panel,
+  .faq-panel p,
+  .faq-icon svg {
+    transition: none;
+  }
+}
+
 /* Carrusel: scroll/swipe sin scrollbar visible */
 .no-scrollbar {
   -ms-overflow-style: none;
