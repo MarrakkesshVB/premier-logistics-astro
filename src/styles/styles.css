@@ -313,9 +313,8 @@ body {
   color: #ffffff;
 }
 .faq-item.is-open .faq-icon {
-  background-color: #ffffff;
-  color: var(--color-primary);
-  box-shadow: inset 0 0 0 1px #cbd5e1;
+  background-color: var(--color-accent);
+  color: #ffffff;
 }
 .faq-item.is-open .faq-icon svg {
   transform: rotate(45deg);
