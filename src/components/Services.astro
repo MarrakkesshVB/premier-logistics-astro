@@ -3,93 +3,79 @@ interface Props {
   isEs?: boolean;
 }
 const { isEs = false } = Astro.props;
+
+const services = [
+  { aisle: isEs ? 'PASILLO 01 · ALMACENAJE' : 'AISLE 01 · STORAGE', icon: 'warehouse', title: isEs ? 'Almacenaje Flexible' : 'Flexible Storage', desc: isEs ? 'Corto y largo plazo en instalación segura 24/7.' : 'Short and long-term in a secure 24/7 facility.' },
+  { aisle: isEs ? 'PASILLO 02 · TRÁNSITO' : 'AISLE 02 · TRANSIT', icon: 'arrow-right-left', title: 'Cross Dock', desc: isEs ? 'Recepción y despacho eficiente sin almacenaje prolongado.' : 'Efficient receiving and dispatch without prolonged storage.' },
+  { aisle: isEs ? 'PASILLO 03 · TRANSFERENCIA' : 'AISLE 03 · TRANSFER', icon: 'plane', title: isEs ? 'Transbordo' : 'Transload', desc: isEs ? 'Descarga de contenedores y transferencia rápida entre camiones.' : 'Unloading containers and fast cargo transfer between trucks.' },
+  { aisle: isEs ? 'PASILLO 04 · PREPARACIÓN' : 'AISLE 04 · FULFILL', icon: 'box', title: 'Pick & Pack', desc: isEs ? 'Preparación precisa de órdenes paletizadas o cajas.' : 'Precise preparation of palletized orders or boxes.' },
+  { aisle: isEs ? 'PASILLO 05 · E-COMM' : 'AISLE 05 · E-COMM', icon: 'shopping-cart', title: 'E-Commerce', desc: isEs ? 'Preparación de pedidos para tiendas online.' : 'Complete fulfillment for online stores.' },
+  { aisle: isEs ? 'PASILLO 06 · DATOS' : 'AISLE 06 · DATA', icon: 'barcode', title: isEs ? 'Gestión de Inventario' : 'Inventory Mgmt', desc: isEs ? 'WMS con acceso remoto al inventario desde tu escritorio.' : 'Warehouse Management System (WMS) with remote access from your desk.' },
+  { aisle: isEs ? 'PASILLO 07 · ESPECIAL' : 'AISLE 07 · SPECIAL', icon: 'package', title: isEs ? 'Manejo Especializado' : 'Specialized Handling', desc: isEs ? 'Arte, mercancía peligrosa, materiales médicos y electrónica de alto valor.' : 'Artwork, dangerous goods, medical materials & high-value electronics.' },
+  { aisle: isEs ? 'PASILLO 08 · EVENTOS' : 'AISLE 08 · EVENTS', icon: 'warehouse', title: isEs ? 'Cajas para Trade Shows' : 'Trade Show Crates', desc: isEs ? 'Almacenaje seguro de cajas entre eventos.' : 'Secure storage of crates between events.' },
+  { aisle: isEs ? 'PASILLO 09 · DISTRIBUCIÓN' : 'AISLE 09 · DISPATCH', icon: 'truck', title: isEs ? 'Última Milla y Drayage' : 'Last Mile & Drayage', desc: isEs ? 'Carga de vehículos y distribución nacional.' : 'Vehicle loading and nationwide distribution.' },
+  { aisle: isEs ? 'PASILLO 10 · ADUANAS' : 'AISLE 10 · CUSTOMS', icon: 'file-check', title: isEs ? 'Servicios TIB' : 'TIB Services', desc: isEs ? 'Bono de Importación Temporal para carga en tránsito.' : 'Temporary Import Bond handling for in-transit cargo.' },
+  { aisle: isEs ? 'PASILLO 11 · CLIMA' : 'AISLE 11 · CLIMATE', icon: 'thermometer', title: isEs ? 'Temperatura Controlada' : 'Temp Control', desc: isEs ? 'Almacenamiento con rango térmico para productos sensibles.' : 'Temperature-controlled storage for sensitive goods.' },
+  { aisle: isEs ? 'PASILLO 12 · SEGURIDAD' : 'AISLE 12 · SECURE', icon: 'lock', title: isEs ? 'Jaulas y Cajas Seguras' : 'Secure Cages & Crates', desc: isEs ? 'Áreas cerradas para mercancía de alto valor.' : 'Locked areas for high-value merchandise.' },
+];
 ---
 
 <section id="services" class="py-16 md:py-32 bg-slate-100 text-primary relative overflow-hidden">
     <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: repeating-linear-gradient(45deg, #cbd5e1 0, #cbd5e1 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20 reveal">
-            <span class="stencil-text text-accent mb-4 block">{isEs ? 'Operaciones CORE' : 'CORE Operations'}</span>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-display">{isEs ? 'Soluciones Logísticas Llave en Mano' : 'Turn-Key Logistics Solutions'}</h2>
-            <p class="text-lg md:text-xl text-slate-600">
-                {isEs ? 'El almacenaje 3PL líder del sur de la Florida: infraestructura optimizada para tu flujo de carga.' : "South Florida's top 3PL warehousing — optimized infrastructure for your cargo flow."}
-            </p>
+
+    <div class="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Vitrina navy que envuelve header + carrusel (como la referencia) -->
+        <div class="relative rounded-[2rem] bg-primary p-6 md:p-10 lg:p-14 overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: repeating-linear-gradient(45deg, #ffffff 0, #ffffff 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
+
+        <!-- Header: título izquierda + flechas derecha (como la referencia) -->
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 md:mb-16 reveal">
+            <div class="max-w-2xl relative">
+                <span class="stencil-text text-accent mb-4 block">{isEs ? 'Operaciones CORE' : 'CORE Operations'}</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-display text-white">{isEs ? 'Soluciones Logísticas Llave en Mano' : 'Turn-Key Logistics Solutions'}</h2>
+                <p class="text-lg md:text-xl text-slate-400">{isEs ? 'El almacenaje 3PL líder del sur de la Florida: infraestructura optimizada para tu flujo de carga.' : "South Florida's top 3PL warehousing — optimized infrastructure for your cargo flow."}</p>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+                <button id="svc-prev" type="button" class="w-12 h-12 rounded-full border-2 border-white/20 text-white hover:border-accent hover:text-accent transition-colors flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Servicios anteriores' : 'Previous services'}>
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button id="svc-next" type="button" class="w-12 h-12 rounded-full border-2 border-white/20 text-white hover:border-accent hover:text-accent transition-colors flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Más servicios' : 'More services'}>
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 01 · ALMACENAJE' : 'AISLE 01 · STORAGE'}</span>
-                <i data-lucide="warehouse" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Almacenaje Flexible' : 'Flexible Storage'}</h3>
-                <p class="text-slate-600">{isEs ? 'Corto y largo plazo en instalación segura 24/7.' : 'Short and long-term in a secure 24/7 facility.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal reveal-delay-100">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 02 · TRÁNSITO' : 'AISLE 02 · TRANSIT'}</span>
-                <i data-lucide="arrow-right-left" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Cross Dock' : 'Cross Dock'}</h3>
-                <p class="text-slate-600">{isEs ? 'Recepción y despacho eficiente sin almacenaje prolongado.' : 'Efficient receiving and dispatch without prolonged storage.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal reveal-delay-200">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 03 · TRANSFERENCIA' : 'AISLE 03 · TRANSFER'}</span>
-                <i data-lucide="plane" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Transbordo' : 'Transload'}</h3>
-                <p class="text-slate-600">{isEs ? 'Descarga de contenedores y transferencia rápida entre camiones.' : 'Unloading containers and fast cargo transfer between trucks.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 04 · PREPARACIÓN' : 'AISLE 04 · FULFILL'}</span>
-                <i data-lucide="box" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Pick & Pack' : 'Pick & Pack'}</h3>
-                <p class="text-slate-600">{isEs ? 'Preparación precisa de órdenes paletizadas o cajas.' : 'Precise preparation of palletized orders or boxes.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal reveal-delay-100">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 05 · E-COMM' : 'AISLE 05 · E-COMM'}</span>
-                <i data-lucide="shopping-cart" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'E-Commerce' : 'E-Commerce'}</h3>
-                <p class="text-slate-600">{isEs ? 'Preparación de pedidos para tiendas online.' : 'Complete fulfillment for online stores.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal reveal-delay-200">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 06 · DATOS' : 'AISLE 06 · DATA'}</span>
-                <i data-lucide="barcode" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Gestión de Inventario' : 'Inventory Mgmt'}</h3>
-                <p class="text-slate-600">{isEs ? 'WMS con acceso remoto al inventario desde tu escritorio.' : 'Warehouse Management System (WMS) with remote access from your desk.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 07 · ESPECIAL' : 'AISLE 07 · SPECIAL'}</span>
-                <i data-lucide="package" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Manejo Especializado' : 'Specialized Handling'}</h3>
-                <p class="text-slate-600">{isEs ? 'Arte, mercancía peligrosa, materiales médicos y electrónica de alto valor.' : 'Artwork, dangerous goods, medical materials & high-value electronics.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal reveal-delay-100">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 08 · EVENTOS' : 'AISLE 08 · EVENTS'}</span>
-                <i data-lucide="warehouse" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Cajas para Trade Shows' : 'Trade Show Crates'}</h3>
-                <p class="text-slate-600">{isEs ? 'Almacenaje seguro de cajas entre eventos.' : 'Secure storage of crates between events.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal reveal-delay-200">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 09 · DISTRIBUCIÓN' : 'AISLE 09 · DISPATCH'}</span>
-                <i data-lucide="truck" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Última Milla y Drayage' : 'Last Mile & Drayage'}</h3>
-                <p class="text-slate-600">{isEs ? 'Carga de vehículos y distribución nacional.' : 'Vehicle loading and nationwide distribution.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 10 · ADUANAS' : 'AISLE 10 · CUSTOMS'}</span>
-                <i data-lucide="file-check" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Servicios TIB' : 'TIB Services'}</h3>
-                <p class="text-slate-600">{isEs ? 'Bono de Importación Temporal para carga en tránsito.' : 'Temporary Import Bond handling for in-transit cargo.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal reveal-delay-100">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 11 · CLIMA' : 'AISLE 11 · CLIMATE'}</span>
-                <i data-lucide="thermometer" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Temperatura Controlada' : 'Temp Control'}</h3>
-                <p class="text-slate-600">{isEs ? 'Almacenamiento con rango térmico para productos sensibles.' : 'Temperature-controlled storage for sensitive goods.'}</p>
-            </div>
-            <div class="bg-white p-8 border border-slate-200 hover:border-accent hover:shadow-xl transition-all group reveal reveal-delay-200">
-                <span class="stencil-text text-slate-400 mb-6 block text-xs">{isEs ? 'PASILLO 12 · SEGURIDAD' : 'AISLE 12 · SECURE'}</span>
-                <i data-lucide="lock" class="w-10 h-10 mb-6 text-slate-700 group-hover:text-accent transition-colors"></i>
-                <h3 class="text-2xl font-bold mb-3 font-display">{isEs ? 'Jaulas y Cajas Seguras' : 'Secure Cages & Crates'}</h3>
-                <p class="text-slate-600">{isEs ? 'Áreas cerradas para mercancía de alto valor.' : 'Locked areas for high-value merchandise.'}</p>
-            </div>
+        <!-- Carrusel: 4 por vista en desktop, swipe táctil en mobile -->
+        <div id="services-track" class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar py-8 -my-8 reveal">
+            {services.map((s) => (
+                <article class="flex-none w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] snap-start bg-white/5 p-8 border border-white/10 hover:border-accent hover:shadow-xl transition-all group relative">
+                    <span class="stencil-text text-slate-500 mb-6 block text-xs">{s.aisle}</span>
+                    <i data-lucide={s.icon} class="w-10 h-10 mb-6 text-slate-300 group-hover:text-accent transition-colors"></i>
+                    <h3 class="text-2xl font-bold mb-3 font-display text-white">{s.title}</h3>
+                    <p class="text-slate-400">{s.desc}</p>
+                </article>
+            ))}
+        </div>
         </div>
     </div>
+
+    <script>
+        // Carrusel vanilla: paginación por viewport + estado de flechas
+        const track = document.getElementById('services-track');
+        const prevBtn = document.getElementById('svc-prev') as HTMLButtonElement | null;
+        const nextBtn = document.getElementById('svc-next') as HTMLButtonElement | null;
+        if (track && prevBtn && nextBtn) {
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const update = () => {
+                const max = track.scrollWidth - track.clientWidth;
+                prevBtn.disabled = track.scrollLeft <= 4;
+                nextBtn.disabled = track.scrollLeft >= max - 4;
+            };
+            prevBtn.addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: reduced ? 'auto' : 'smooth' }));
+            nextBtn.addEventListener('click', () => track.scrollBy({ left: track.clientWidth, behavior: reduced ? 'auto' : 'smooth' }));
+            track.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        }
+    </script>
 </section>

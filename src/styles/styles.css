@@ -255,6 +255,15 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+/* Carrusel: scroll/swipe sin scrollbar visible */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Reveal Animations */
 .reveal {
   opacity: 0;
