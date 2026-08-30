@@ -5,7 +5,7 @@ interface Props {
 const { isEs = false } = Astro.props;
 ---
 
-<section id="rates" class="py-10 md:py-12 bg-white relative min-h-svh flex flex-col justify-center">
+<section id="rates" class="py-10 md:py-12 bg-slate-100 relative min-h-svh flex flex-col justify-center">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div class="mb-8 md:mb-10 reveal">
             <span class="stencil-text text-slate-400 mb-2 block">{isEs ? 'Precios Transparentes' : 'Transparent Pricing'}</span>
@@ -18,7 +18,7 @@ const { isEs = false } = Astro.props;
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-5">
             <!-- Fila 1: Storage -->
-            <div class="lg:col-span-2 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-100">
+            <div class="lg:col-span-2 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-100">
                 <div>
                     <div class="flex justify-between items-center mb-4">
                         <span class="stencil-text text-accent">{isEs ? 'ALMACENAJE' : 'STORAGE'}</span>
@@ -38,7 +38,7 @@ const { isEs = false } = Astro.props;
             </div>
 
             <!-- Fila 1: Pick & Pack -->
-            <div class="lg:col-span-2 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-200">
+            <div class="lg:col-span-2 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-200">
                 <div>
                     <div class="flex justify-between items-center mb-4">
                         <span class="stencil-text text-accent">FULFILLMENT</span>
@@ -58,7 +58,7 @@ const { isEs = false } = Astro.props;
             </div>
 
             <!-- Fila 1: Cross Dock -->
-            <div class="lg:col-span-2 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-300">
+            <div class="lg:col-span-2 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-300">
                 <div>
                     <div class="flex justify-between items-center mb-4">
                         <span class="stencil-text text-accent">{isEs ? 'RECEPCIÓN' : 'RECEIVING'}</span>
@@ -78,7 +78,7 @@ const { isEs = false } = Astro.props;
             </div>
 
             <!-- Fila 2: Transload Same Day -->
-            <div class="lg:col-span-3 md:col-span-1 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-100">
+            <div class="lg:col-span-3 md:col-span-1 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-100">
                 <div>
                     <div class="flex justify-between items-center mb-4">
                         <span class="stencil-text text-accent">{isEs ? 'MANEJO' : 'HANDLING'}</span>
@@ -98,7 +98,7 @@ const { isEs = false } = Astro.props;
             </div>
 
             <!-- Fila 2: Transload Next Day -->
-            <div class="lg:col-span-3 md:col-span-1 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-200">
+            <div class="lg:col-span-3 md:col-span-1 h-full border border-slate-200 rounded-2xl p-5 md:p-6 bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden group/card flex flex-col justify-between reveal reveal-delay-200">
                 <div>
                     <div class="flex justify-between items-center mb-4">
                         <span class="stencil-text text-accent">{isEs ? 'MANEJO' : 'HANDLING'}</span>

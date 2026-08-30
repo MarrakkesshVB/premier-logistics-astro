@@ -275,26 +275,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Dock Door Wipe Transition
-    const facilitySection = document.getElementById('facility');
-    const dockDoor = document.getElementById('dock-door');
-    
-    if (facilitySection && dockDoor && !prefersReducedMotion) {
-        const doorObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // Open door when section is 30% visible
-                if (entry.isIntersecting) {
-                    dockDoor.classList.add('is-open');
-                } else if (entry.boundingClientRect.top > 0) {
-                    // Close it if we scroll back up past it
-                    dockDoor.classList.remove('is-open');
-                }
-            });
-        }, {
-            threshold: 0.3
-        });
-        doorObserver.observe(facilitySection);
-    }
 
     // 9. Leads vía fetch (Web3Forms) — sin salir del sitio
     const quoteForm = document.querySelector('form[action="https://api.web3forms.com/submit"]');
