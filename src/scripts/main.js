@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         estService = s;
         document.querySelectorAll('#service-picker .est-svc').forEach(b => {
             const active = b.dataset.service === s;
-            b.className = 'est-svc px-2 py-2 text-xs font-bold rounded-md ' + (active ? 'bg-accent text-white' : 'bg-slate-700 text-slate-300');
+            b.className = 'est-svc px-2 py-2 text-xs font-bold rounded-md ' + (active ? 'bg-accent text-white' : 'bg-slate-100 text-slate-600');
             b.setAttribute('aria-pressed', String(active));
         });
         if (blockPallets) blockPallets.classList.toggle('hidden', s === 'crossdock');
@@ -138,11 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
         estTurnaround = t;
         const same = t === 'same_day';
         if (estSameBtn) {
-            estSameBtn.className = 'px-3 py-1.5 text-xs font-bold ' + (same ? 'bg-accent text-white' : 'bg-slate-700 text-slate-300');
+            estSameBtn.className = 'px-3 py-1.5 text-xs font-bold ' + (same ? 'bg-accent text-white' : 'bg-slate-100 text-slate-600');
             estSameBtn.setAttribute('aria-pressed', String(same));
         }
         if (estNextBtn) {
-            estNextBtn.className = 'px-3 py-1.5 text-xs font-bold ' + (same ? 'bg-slate-700 text-slate-300' : 'bg-accent text-white');
+            estNextBtn.className = 'px-3 py-1.5 text-xs font-bold ' + (same ? 'bg-slate-100 text-slate-600' : 'bg-accent text-white');
             estNextBtn.setAttribute('aria-pressed', String(!same));
         }
         updateEstimator();
@@ -154,8 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
         monthsInput.max = isMonths ? 12 : 45;
         monthsInput.value = isMonths ? 1 : 10;
         monthsVal.textContent = monthsInput.value;
-        unitMonthsBtn.className = 'px-2 py-1 text-xs font-bold ' + (isMonths ? 'bg-accent text-white' : 'bg-slate-700 text-slate-300');
-        unitDaysBtn.className = 'px-2 py-1 text-xs font-bold ' + (isMonths ? 'bg-slate-700 text-slate-300' : 'bg-accent text-white');
+        unitMonthsBtn.className = 'px-2 py-1 text-xs font-bold ' + (isMonths ? 'bg-accent text-white' : 'bg-slate-100 text-slate-600');
+        unitDaysBtn.className = 'px-2 py-1 text-xs font-bold ' + (isMonths ? 'bg-slate-100 text-slate-600' : 'bg-accent text-white');
         unitMonthsBtn.setAttribute('aria-pressed', String(isMonths));
         unitDaysBtn.setAttribute('aria-pressed', String(!isMonths));
         if (durationNote) durationNote.classList.toggle('hidden', isMonths);
