@@ -23,8 +23,11 @@ const services = [
 <section id="services" class="py-16 md:py-32 bg-gradient-to-b from-white to-slate-100 text-primary relative overflow-hidden">
 
     <div class="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Vitrina navy que envuelve header + carrusel (como la referencia) -->
-        <div class="relative rounded-[2rem] bg-white border border-slate-200 shadow-xl p-6 md:p-10 lg:p-14 overflow-hidden">
+        <!-- Vitrina blanca que envuelve header + carrusel -->
+        <div class="relative isolate rounded-[2rem] bg-white border border-slate-200 shadow-xl p-6 md:p-10 lg:p-14 overflow-hidden">
+
+            <!-- Ambient: textura de bodega con blur sutil, recortada por la vitrina -->
+            <img src="/assets/services-ambient.webp" alt={isEs ? 'Interior de bodega con estanterías y carga paletizada' : 'Warehouse interior with racked palletized cargo'} width="1600" height="1067" class="svc-ambient" loading="lazy" decoding="async" />
 
         <!-- Header: texto editorial (sin flechas) -->
         <div class="mb-12 md:mb-16 reveal">
