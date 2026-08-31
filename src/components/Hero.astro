@@ -24,9 +24,9 @@ const { isEs = false } = Astro.props;
         
         <div id="hero-content" class="relative z-20 w-full px-6 lg:px-10 pt-28 md:pt-32 pb-2 text-center flex-none">
             <div class="max-w-4xl mx-auto">
-                <div class="flex items-center justify-center gap-3 mb-6">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                     <span class="w-10 h-[2px] bg-accent"></span>
-                    <span class="stencil-text text-accent">{isEs ? 'ALMACENAJE Y LOGÍSTICA PREMIER' : 'PREMIER WAREHOUSE & LOGISTICS'}</span>
+                    <span class="stencil-text text-accent text-center">{isEs ? 'ALMACENAJE Y LOGÍSTICA PREMIER' : 'PREMIER WAREHOUSE & LOGISTICS'}</span>
                 </div>
                 
                 <h1 class="text-4xl tracking-tight sm:text-5xl sm:tracking-normal md:text-7xl lg:text-8xl font-bold leading-[0.95] md:leading-[0.9] text-primary mb-8 font-display">

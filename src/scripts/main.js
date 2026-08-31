@@ -88,9 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
 
-    // 5. Parallax Hero
+    // 5. Parallax Hero (solo tier desktop: en táctil el contenido queda fijo)
     const heroContent = document.getElementById('hero-content');
-    if (!prefersReducedMotion && heroContent) {
+    const isDesktopTier = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!prefersReducedMotion && isDesktopTier && heroContent) {
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
             if (scrollY < window.innerHeight) {
