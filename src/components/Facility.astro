@@ -3,6 +3,9 @@ interface Props {
   isEs?: boolean;
 }
 const { isEs = false } = Astro.props;
+
+// Ficha de Google Maps del negocio (misma URL que hasMap en el JSON-LD del Layout)
+const MAPS_URL = "https://www.google.com/maps/place/Premier+Warehouse+Logistics/@25.8069095,-80.384965,17z/data=!3m1!4b1!4m6!3m5!1s0x88d9bf29c6bbb123:0x29045021e26eb9a5!8m2!3d25.8069047!4d-80.3823901!16s%2Fg%2F11rctyrgfy";
 ---
 
 <section id="facility" class="py-16 md:py-24 bg-gradient-to-b from-white to-slate-100 text-primary relative overflow-hidden">
@@ -72,18 +75,41 @@ const { isEs = false } = Astro.props;
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-4 h-[600px] reveal">
-                <div class="space-y-4 h-full">
-                    <div class="bg-slate-200 rounded-2xl h-1/2 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80" alt="Warehouse Interior" width="800" height="600" loading="lazy" decoding="async" class="object-cover w-full h-full" />
+            <!-- Vitrina editorial: la foto nítida es la "prueba de operación" -->
+            <div class="relative rounded-[2rem] overflow-hidden border border-slate-200 shadow-xl h-[500px] md:h-[560px] lg:h-[600px] reveal">
+
+                <img src="/assets/facility-interior.webp" alt={isEs ? 'Interior de bodega en operación: estanterías con carga paletizada ordenada' : 'Operating warehouse interior: racking with neatly palletized cargo'} width="2560" height="1600" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+
+                <!-- Scrim: oscurece el pie de la foto para asentar el panel glass -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-slate-900/5 to-transparent pointer-events-none"></div>
+
+                <!-- Panel glass: ubicación real + conectividad logística -->
+                <div class="fac-panel absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-auto md:w-[380px] rounded-2xl p-5 md:p-6">
+
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="/assets/facility-exterior.webp" alt={isEs ? 'Fachada del edificio de la bodega en Doral' : 'Warehouse building facade in Doral'} width="800" height="600" class="w-16 h-16 md:w-[72px] md:h-[72px] rounded-xl object-cover border-2 border-white shadow-md shrink-0" loading="lazy" decoding="async" />
+                        <div class="min-w-0">
+                            <span class="stencil-text text-accent mb-1 block">{isEs ? 'Ubicación' : 'Location'}</span>
+                            <h3 class="text-base md:text-xl font-bold font-display text-primary leading-tight">3600 NW 114th Ave, Unit A<br/>Doral, FL 33178</h3>
+                        </div>
                     </div>
-                    <div class="bg-primary rounded-2xl h-1/2 p-8 text-white flex flex-col justify-end">
-                        <span class="stencil-text text-accent mb-2">{isEs ? 'Ubicación' : 'Location'}</span>
-                        <h3 class="text-2xl font-bold font-display">Miami, FL</h3>
+
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">{isEs ? 'A minutos de' : 'Minutes from'}</p>
+                    <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm font-bold text-slate-700 mb-4">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="plane" class="w-4 h-4 text-accent shrink-0"></i>
+                            {isEs ? 'Aeropuerto MIA' : 'MIA Airport'}
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="ship" class="w-4 h-4 text-accent shrink-0"></i>
+                            {isEs ? 'Puerto de Miami' : 'Port of Miami'}
+                        </span>
                     </div>
-                </div>
-                <div class="bg-slate-200 rounded-2xl h-full overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80" alt="Logistics Operations" width="800" height="1200" loading="lazy" decoding="async" class="object-cover w-full h-full" />
+
+                    <a href={MAPS_URL} target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full bg-primary hover:bg-slate-800 text-white px-5 py-3 rounded-xl text-sm font-bold transition-colors">
+                        <i data-lucide="navigation" class="w-4 h-4"></i>
+                        {isEs ? 'Cómo llegar' : 'Get Directions'}
+                    </a>
                 </div>
             </div>
         </div>
