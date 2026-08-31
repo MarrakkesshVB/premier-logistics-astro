@@ -219,6 +219,8 @@ body {
 .btn-loading::after {
   content: var(--msg-loading, 'Sending...');
   display: inline-block;
+  color: inherit;
+  font-weight: bold;
 }
 .btn-loading i {
   animation: pulse-icon 1s infinite;
@@ -229,10 +231,20 @@ body {
 }
 .btn-success { background: #059669 !important; pointer-events: none; }
 .btn-success .btn-text { display: none; }
-.btn-success::after { content: var(--msg-success, 'Request sent — we\'ll contact you'); display: inline-block; }
+.btn-success::after {
+  content: var(--msg-success, 'Request sent — we\'ll contact you');
+  display: inline-block;
+  color: inherit;
+  font-weight: bold;
+}
 .btn-error { background: #dc2626 !important; }
 .btn-error .btn-text { display: none; }
-.btn-error::after { content: var(--msg-error, 'Error — call 305.877.5964'); display: inline-block; }
+.btn-error::after {
+  content: var(--msg-error, 'Error — call 305.877.5964');
+  display: inline-block;
+  color: inherit;
+  font-weight: bold;
+}
 
 /* Marquee */
 .marquee-container {
