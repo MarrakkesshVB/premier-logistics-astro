@@ -1,4 +1,6 @@
 {
+    "editor.formatOnSave": false,
+
     "cSpell.language": "en,es",
     "cSpell.words": [
         "botcheck",
