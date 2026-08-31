@@ -130,6 +130,20 @@ body {
   }
 }
 
+/* Tier mobile: anillo multicolor COMPLETO y fijo (misma paleta del beam,
+   sin tramo transparente) → contorno redondeado entero + cero repaint en scroll. */
+@media (hover: none), (pointer: coarse) {
+  .glass-card-stat::before {
+    animation: none;
+    background: conic-gradient(from 90deg,
+      rgba(238, 8, 8, 0.55) 0deg,
+      rgba(255, 190, 140, 0.75) 90deg,
+      rgba(255, 255, 255, 0.9) 180deg,
+      rgba(140, 200, 255, 0.6) 270deg,
+      rgba(238, 8, 8, 0.55) 360deg);
+  }
+}
+
 /* Quote form: ritmo vertical comprimido para caber en 100vh */
 #quote input[type="text"],
 #quote input[type="email"],
