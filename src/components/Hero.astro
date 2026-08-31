@@ -10,8 +10,8 @@ const { isEs = false } = Astro.props;
     <img src="/assets/background.webp" alt="" aria-hidden="true" width="2560" height="1440" decoding="async" class="hero-ambient" />
     <div class="absolute inset-0 bg-white/45"></div>
 
-    <div class="w-full h-full px-4 sm:px-6 lg:px-8 flex flex-col">
-    <div class="hero-panel relative z-20 w-full max-w-[1800px] mx-auto rounded-[2rem] overflow-hidden h-full flex flex-col">
+    <div class="w-full flex-1 px-4 sm:px-6 lg:px-8 flex flex-col">
+    <div class="hero-panel relative z-20 w-full max-w-[1800px] mx-auto rounded-[2rem] overflow-hidden flex-1 flex flex-col">
         <img src="/assets/background.webp" alt={isEs ? 'Instalación de Premier Warehouse en Miami' : 'Premier Warehouse facility'} width="2560" height="1440" fetchpriority="high" decoding="async" class="hero-photo" />
         <div class="hero-scrim" aria-hidden="true"></div>
         

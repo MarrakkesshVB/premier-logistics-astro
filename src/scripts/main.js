@@ -1,3 +1,9 @@
+// Reload (F5 / botón) → siempre al hero: el browser no restaura el scroll previo.
+// 'manual' también aplica a back/forward (deseado: cambiar idioma / ↔ /es/ vuelve al top).
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+// 'instant' pisa el scroll-smooth del <html>; el guard respeta deep-links con #ancla
+if (!location.hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Icons (guard de carga segura)
     const refreshIcons = () => { if (window.lucide) lucide.createIcons(); };
@@ -320,6 +326,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         quoteForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }, 100);
+                    // Reset con gracia: a los 4s limpia datos, resincroniza el form
+                    // adaptativo y devuelve el botón a su estado normal habilitado
+                    setTimeout(() => {
+                        quoteForm.reset();
+                        const svc = quoteForm.querySelector('[name="service_type"]');
+                        if (svc) svc.dispatchEvent(new Event('change'));
+                        setBtnState(null);
+                    }, 4000);
                 }
             } catch {
                 setBtnState('btn-error');
