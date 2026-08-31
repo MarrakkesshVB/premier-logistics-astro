@@ -24,6 +24,7 @@
 
 ## Links
 
-- Website: https://marrakkesshvb.github.io/premier-warehouse/
-- Spanish version: https://marrakkesshvb.github.io/premier-warehouse/es/
+- Website: https://premier-logistics-astro.pages.dev/
+- Quote request form: https://premier-logistics-astro.pages.dev/#quote
+- Spanish version: https://premier-logistics-astro.pages.dev/es/
 - Google Business Profile: https://www.google.com/maps/place/Premier+Warehouse+Logistics/@25.8069095,-80.384965,17z/data=!3m1!4b1!4m6!3m5!1s0x88d9bf29c6bbb123:0x29045021e26eb9a5!8m2!3d25.8069047!4d-80.3823901!16s%2Fg%2F11rctyrgfy

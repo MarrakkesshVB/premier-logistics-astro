@@ -1,5 +1,6 @@
 # Premier Warehouse & Logistics Management
 # AI assistants welcome (AEO)
+# AI guidance: https://premier-logistics-astro.pages.dev/llms.txt
 
 User-agent: *
 Allow: /
@@ -16,4 +17,11 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://marrakkesshvb.github.io/premier-warehouse/sitemap.xml
+# OpenAI: ChatGPT Search (resultados en vivo) y fetch iniciado por usuarios
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://premier-logistics-astro.pages.dev/sitemap.xml

@@ -15,7 +15,7 @@ const {
 const isEs = lang === 'es';
 
 // URL canónica por idioma (SEO bilingüe)
-const SITE = "https://marrakkesshvb.github.io/premier-warehouse";
+const SITE = "https://premier-logistics-astro.pages.dev";
 const canonicalUrl = isEs ? `${SITE}/es/` : `${SITE}/`;
 
 // Ficha de Google Maps del negocio (misma URL que hasMap en el JSON-LD y el panel de Facility)
@@ -39,28 +39,28 @@ import "../styles/styles.css";
     <meta property="og:title" content="Premier Warehouse & Logistics — Warehousing in Miami" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content="https://marrakkesshvb.github.io/premier-warehouse/assets/background.webp" />
+    <meta property="og:image" content="https://premier-logistics-astro.pages.dev/assets/background.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- SEO Bilingüe Real (i18n) -->
-    <link rel="alternate" hreflang="en" href="https://marrakkesshvb.github.io/premier-warehouse/" />
-    <link rel="alternate" hreflang="es" href="https://marrakkesshvb.github.io/premier-warehouse/es/" />
-    <link rel="alternate" hreflang="x-default" href="https://marrakkesshvb.github.io/premier-warehouse/" />
+    <link rel="alternate" hreflang="en" href="https://premier-logistics-astro.pages.dev/" />
+    <link rel="alternate" hreflang="es" href="https://premier-logistics-astro.pages.dev/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://premier-logistics-astro.pages.dev/" />
 
     <script type="application/ld+json" is:inline>
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "@id": "https://marrakkesshvb.github.io/premier-warehouse/#business",
+      "@id": "https://premier-logistics-astro.pages.dev/#business",
       "name": "Premier Warehouse & Logistics Management",
       "legalName": "Premier Warehouse & Logistics Management Corp.",
       "description": "3PL warehousing in Doral, Miami: storage, cross dock, transload, pick & pack and e-commerce fulfillment in a 24/7 secured, woman-owned facility.",
-      "url": "https://marrakkesshvb.github.io/premier-warehouse/",
+      "url": "https://premier-logistics-astro.pages.dev/",
       "telephone": "+1-305-877-5964",
       "email": "info@mypremierwarehouse.com",
-      "logo": "https://marrakkesshvb.github.io/premier-warehouse/assets/logo.webp",
-      "image": "https://marrakkesshvb.github.io/premier-warehouse/assets/background.webp",
+      "logo": "https://premier-logistics-astro.pages.dev/assets/logo.webp",
+      "image": "https://premier-logistics-astro.pages.dev/assets/background.webp",
       "priceRange": "$9.00 - $250.00",
       "address": {
         "@type": "PostalAddress",

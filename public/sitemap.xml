@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://marrakkesshvb.github.io/premier-warehouse/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://marrakkesshvb.github.io/premier-warehouse/es/" />
+    <loc>https://premier-logistics-astro.pages.dev/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://premier-logistics-astro.pages.dev/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://premier-logistics-astro.pages.dev/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://premier-logistics-astro.pages.dev/" />
     <lastmod>2026-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://marrakkesshvb.github.io/premier-warehouse/es/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://marrakkesshvb.github.io/premier-warehouse/" />
+    <loc>https://premier-logistics-astro.pages.dev/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://premier-logistics-astro.pages.dev/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://premier-logistics-astro.pages.dev/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://premier-logistics-astro.pages.dev/" />
     <lastmod>2026-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
 </urlset>
