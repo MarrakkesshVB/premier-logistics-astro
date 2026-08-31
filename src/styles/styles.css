@@ -58,6 +58,16 @@ body {
   #navbar.nav-scrolled .nav-glass { background: rgba(255, 255, 255, 0.92); }
 }
 
+/* Tier mobile: sin backdrop-filter (la 1ª compilación del shader cuesta ~1s en GPU móvil).
+   Opacidad más alta compensa: el glass se siente instantáneo al scrollear. */
+@media (hover: none), (pointer: coarse) {
+  #navbar.nav-scrolled .nav-glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.92);
+  }
+}
+
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
