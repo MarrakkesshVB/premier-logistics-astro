@@ -22,9 +22,9 @@ const services = [
 
 <section id="services" class="min-h-svh flex flex-col justify-center py-16 md:py-32 bg-gradient-to-b from-white to-slate-100 text-primary relative overflow-hidden">
 
-    <div class="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="w-full min-w-0 max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Vitrina blanca que envuelve header + carrusel -->
-        <div class="relative isolate rounded-[2rem] bg-white border border-slate-200 shadow-xl p-6 md:p-10 lg:p-14 overflow-hidden">
+        <div class="relative isolate w-full min-w-0 max-w-full rounded-[2rem] bg-white border border-slate-200 shadow-xl p-6 md:p-10 lg:p-14 overflow-hidden">
 
             <!-- Ambient: textura de bodega con blur sutil, recortada por la vitrina -->
             <img src="/assets/services-ambient.webp" alt={isEs ? 'Interior de bodega con estanterías y carga paletizada' : 'Warehouse interior with racked palletized cargo'} width="1600" height="1067" class="svc-ambient" loading="lazy" decoding="async" />
@@ -37,19 +37,19 @@ const services = [
         </div>
 
         <!-- Flechas: flotando arriba-derecha del carrusel -->
-        <div class="flex justify-end mb-4 reveal">
+        <div class="svc-arrows flex justify-end mb-4 reveal">
             <div class="flex items-center gap-3">
-                <button id="svc-prev" type="button" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-700 shadow-lg shadow-slate-900/10 hover:border-accent hover:text-accent hover:shadow-xl transition-all flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Servicios anteriores' : 'Previous services'}>
+                <button id="svc-prev" type="button" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-200 text-slate-700 shadow-lg shadow-slate-900/10 hover:border-accent hover:text-accent hover:shadow-xl transition-all flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Servicios anteriores' : 'Previous services'}>
                     <i data-lucide="chevron-left" class="w-5 h-5"></i>
                 </button>
-                <button id="svc-next" type="button" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-700 shadow-lg shadow-slate-900/10 hover:border-accent hover:text-accent hover:shadow-xl transition-all flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Más servicios' : 'More services'}>
+                <button id="svc-next" type="button" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-200 text-slate-700 shadow-lg shadow-slate-900/10 hover:border-accent hover:text-accent hover:shadow-xl transition-all flex items-center justify-center disabled:opacity-40 disabled:pointer-events-none" aria-label={isEs ? 'Más servicios' : 'More services'}>
                     <i data-lucide="chevron-right" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
 
         <!-- Carrusel: 4 por vista en desktop, swipe táctil en mobile -->
-        <div id="services-track" class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar py-8 -my-8 reveal">
+        <div id="services-track" class="flex w-full max-w-full gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar py-8 -my-8 reveal">
             {services.map((s) => (
                 <article class="svc-card flex-none w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] snap-start p-8 border border-white/70 hover:border-accent hover:shadow-xl transition-all group relative">
                     <span class="stencil-text text-slate-400 mb-6 block text-xs">{s.aisle}</span>
