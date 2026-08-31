@@ -1,0 +1,25 @@
+---
+import { site } from "../config/site.js";
+
+// Astro sirve este archivo como /sitemap.xml con content-type correcto
+export async function GET() {
+  const today = new Date().toISOString().split('T')[0];
+  const urls = [
+    { loc: `${site.url}/`, en: `${site.url}/`, es: `${site.url}/es/` },
+    { loc: `${site.url}/es/`, en: `${site.url}/`, es: `${site.url}/es/` },
+  ];
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urls.map(u => `  <url>
+    <loc>${u.loc}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="${u.en}" />
+    <xhtml:link rel="alternate" hreflang="es" href="${u.es}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${u.en}" />
+    <lastmod>${today}</lastmod>
+  </url>`).join('\n')}
+</urlset>`;
+  return new Response(xml, {
+    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
+  });
+}
+---
