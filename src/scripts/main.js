@@ -276,6 +276,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // 8.5 Mensajes de estado del botón, bilingües (el CSS ::after lee estas variables)
+    const uiLang = document.documentElement.getAttribute('lang') === 'es' ? 'es' : 'en';
+    const btnMsgs = uiLang === 'es'
+      ? { loading: 'Enviando...', success: 'Solicitud enviada — te contactaremos', error: 'Error — llámanos al 305.877.5964' }
+      : { loading: 'Sending...', success: "Request sent — we'll contact you", error: 'Error — call 305.877.5964' };
+    const quoteBtn = document.getElementById('quote-submit-btn');
+    if (quoteBtn) {
+      quoteBtn.style.setProperty('--msg-loading', `'${btnMsgs.loading}'`);
+      quoteBtn.style.setProperty('--msg-success', `'${btnMsgs.success}'`);
+      quoteBtn.style.setProperty('--msg-error', `'${btnMsgs.error}'`);
+    }
+
     // 9. Leads vía fetch (Web3Forms) — sin salir del sitio
     const quoteForm = document.querySelector('form[action="https://api.web3forms.com/submit"]');
     const quoteSubmitBtn = document.getElementById('quote-submit-btn');
