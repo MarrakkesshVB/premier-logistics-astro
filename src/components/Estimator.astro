@@ -29,7 +29,7 @@ const { isEs = false } = Astro.props;
 
                     <div id="block-pallets">
                         <div class="flex justify-between mb-2">
-                            <label class="font-bold text-sm uppercase tracking-wider text-slate-700">{isEs ? 'Número de Pallets' : 'Number of Pallets'}</label>
+                            <label for="pallets" class="font-bold text-sm uppercase tracking-wider text-slate-700">{isEs ? 'Número de Pallets' : 'Number of Pallets'}</label>
                             <span class="font-mono font-bold text-accent" id="pallets-val">10</span>
                         </div>
                         <input type="range" id="pallets" min="1" max="100" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-accent" />
@@ -37,7 +37,7 @@ const { isEs = false } = Astro.props;
 
                     <div id="block-duration">
                         <div class="flex justify-between items-center mb-2">
-                            <label class="font-bold text-sm uppercase tracking-wider text-slate-700">{isEs ? 'Duración' : 'Duration'}</label>
+                            <label for="months" class="font-bold text-sm uppercase tracking-wider text-slate-700">{isEs ? 'Duración' : 'Duration'}</label>
                             <div class="flex items-center gap-2">
                                 <div class="flex rounded-md overflow-hidden border border-slate-300">
                                     <button type="button" id="unit-months" class="px-2 py-1 text-xs font-bold bg-accent text-white">{isEs ? 'Meses' : 'Months'}</button>
@@ -51,7 +51,7 @@ const { isEs = false } = Astro.props;
                     </div>
 
                     <div id="block-turnaround" class="hidden">
-                        <label class="font-bold text-sm uppercase tracking-wider text-slate-700 block mb-2">{isEs ? 'Tiempo de Entrega' : 'Turnaround'}</label>
+                        <span class="font-bold text-sm uppercase tracking-wider text-slate-700 block mb-2">{isEs ? 'Tiempo de Entrega' : 'Turnaround'}</span>
                         <div class="flex rounded-md overflow-hidden border border-slate-300 w-fit">
                             <button type="button" id="est-same" class="px-3 py-1.5 text-xs font-bold bg-accent text-white" aria-pressed="true">{isEs ? 'Mismo Día ($9.00)' : 'Same Day ($9.00)'}</button>
                             <button type="button" id="est-next" class="px-3 py-1.5 text-xs font-bold bg-slate-100 text-slate-600" aria-pressed="false">{isEs ? 'Día Siguiente ($10.50)' : 'Next Day ($10.50)'}</button>
