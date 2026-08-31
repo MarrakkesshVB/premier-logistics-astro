@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: isEs ? '¿Ofrecen contratos cortos o diarios?' : 'Do you offer short-term or daily contracts?',
-    a: isEs ? 'Sí: contratos diarios y semanales disponibles. Tu cotización personalizada es confirmada por nuestro equipo.' : 'Yes: daily & weekly contracts available. Your custom quote is confirmed by our team.',
+    a: isEs ? 'Sí: contratos diarios, semanales, mensuales o anuales disponibles. Tu cotización personalizada es confirmada por nuestro equipo.' : 'Yes: daily, weekly, monthly or annual contracts available. Your custom quote is confirmed by our team.',
   },
 ];
 
@@ -43,7 +43,7 @@ const faqSchema = {
 };
 ---
 
-<section class="py-16 md:py-24 bg-gradient-to-b from-white to-slate-100" id="faq">
+<section class="min-h-svh flex flex-col justify-center py-16 md:py-24 bg-gradient-to-b from-white to-slate-100" id="faq">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 reveal">
             <span class="stencil-text text-accent mb-4 block">{isEs ? 'PREGUNTAS FRECUENTES' : 'FAQS'}</span>
